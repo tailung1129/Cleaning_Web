@@ -1,0 +1,5 @@
+.mainbox-shadow {
+    box-shadow: 0 2px 2px 2px rgb(201, 197, 197);
+    margin-top: -50px;
+    background-color: white;
+}

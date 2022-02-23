@@ -1,0 +1,30 @@
+.bg-color-cardheader {
+    background-color: #0063aa!important;
+}
+
+.text-color-card1 {
+    color: #0063aa;
+}
+
+.icon-size-1 {
+    height: 100%;
+    width: 100%;
+}
+
+.bg-color-icon-div1 {
+    background-color: #ebf3fa;
+    width: 105px;
+    height: 100px;
+}
+
+.bg-color-icon-div1:hover {
+    color:#fc9e10;
+    background-color: #e2dcc0;
+    cursor: pointer;
+}
+
+.bg-color-icon-div1:focus-within {
+    color:#fc9e10;
+    background-color: #e2dcc0;
+}
+

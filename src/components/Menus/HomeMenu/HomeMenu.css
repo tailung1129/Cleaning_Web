@@ -1,0 +1,14 @@
+.navli {
+    border-bottom: 3px #015b9b solid ;
+}
+
+.navli:hover {
+    background-color: #95c23d!important;
+    border-bottom: 3px #95c23d solid;
+}
+
+.navli:focus-within {
+    border-bottom: 3px #95c23d solid;
+    background-color: #015b9b!important;
+}
+

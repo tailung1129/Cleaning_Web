@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+body {
+  font-family: inherit;
+}
+
+main {
+  min-height: 80vh;
+}
+
+.px-90px {
+  padding: 0 90px;
+}
+
+.background-color-1{
+  background-color: #ffcc00;
+}
+
+.background-color-2{
+  background-color: #e6b800;
+}
+
+.text-color-1 {
+  color: #ffcc00;
+}
+
+.text-color-2 {
+  color: #e6b800;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.pb-70px {
+  padding-bottom: 70px;
+}

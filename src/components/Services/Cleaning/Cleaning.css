@@ -1,0 +1,23 @@
+/* category style */
+
+.bg-color-icon-div {
+    background-color: #ebf3fa;
+    width: 150px;
+    height: 150px;
+}
+
+.bg-color-icon-div:hover {
+    color:#fc9e10;
+    background-color: #e2dcc0;
+    cursor: pointer;
+}
+
+.icon-size-1 {
+    height: 120px;
+    width: 60px;
+}
+
+.text-color-1 {
+    color: #0063aa;
+}
+
