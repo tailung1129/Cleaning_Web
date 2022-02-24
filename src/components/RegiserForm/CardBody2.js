@@ -1,5 +1,5 @@
 import { Card, Row, Col, Form, Button } from "react-bootstrap";
-import axios from "axios"
+import { fnRegister } from "../../api"
 
 const Cardbody2 = (props) => {
   var companyname = "";
@@ -61,7 +61,7 @@ const Cardbody2 = (props) => {
             location: location,
             country: ""
         };
-        axios.post('http://localhost:8080/company/register' , postdata )
+        fnRegister( postdata )
             .then((res) => {
                 console.log(res.data)
             }).catch((error) => {
