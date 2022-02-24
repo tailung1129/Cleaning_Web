@@ -154,11 +154,8 @@ const Cleaning = () => {
         <CustomProgressBar currentstate={currentstep * 15} />
         <CurrentComponent steps={steps} currentstep={currentstep} />
         <Row className="my-4 py-4">
-          {currentstep === 7 ? (
-            <Col className="text-center">
-              <Button variant="danger" onClick={() => setNextalarm(currentstep)} >To verufy</Button>
-            </Col>
-          ) : (
+          {currentstep === 7 ? ""           
+           : (
             <Row>
               <Col className="text-end">
                 <Button
