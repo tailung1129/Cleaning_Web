@@ -31,15 +31,15 @@ const PhoneVerify = (props) => {
     //   alert("this is finish");
       var preresult = props.resultcleaning;
       var postdata = {
-        categoryId: preresult.category,
+        categoryId: "6217ad062553ae7955a86182",
         user: { firstname: preresult.firstname, 
                 lastname: preresult.lastname,
                 email: preresult.email,
-                contactNo: ""
+                contactNo: preresult.phonenumber
         },
         date: preresult.categorydate,
         numberOfRooms: parseInt(preresult.roomnum),
-        purchaseGuarantee: "",
+        purchaseGuarantee: "yes",
         objectArea: parseInt(preresult.floorarea),
         pollution: preresult.pollution,
         areas: [preresult.additionalarea],
@@ -54,34 +54,7 @@ const PhoneVerify = (props) => {
         noOfBoxes: 0,
         description: preresult.orderdescription
       };
-      var postdata1 = {
-        "categoryId": "string",
-        "user": {
-          "firstname": "string",
-          "lastname": "string",
-          "email": "string",
-          "contactNo": "string"
-        },
-        "date": "2022-02-24T14:47:49.645Z",
-        "numberOfRooms": 0,
-        "purchaseGuarantee": "string",
-        "objectArea": 0,
-        "pollution": "string",
-        "areas": [
-          "string"
-        ],
-        "extras": "string",
-        "location": "string",
-        "distance": 0,
-        "focus": "string",
-        "frequency": "string",
-        "discount": 0,
-        "reachableFrom": 0,
-        "reachableTill": 0,
-        "noOfBoxes": 0,
-        "description": "string"
-      }
-      console.log("here is request offer postdata " , postdata1);
+      console.log("here is request offer postdata " , postdata);
       fnRequestSave(postdata)
         .then((res) => {
             console.log(res);
