@@ -1,8 +1,16 @@
-import React , { useState } from "react"
+import React , { useState , useLayoutEffect } from "react"
 import { Form , Button , ButtonGroup } from 'react-bootstrap'
+import { fnGetCategory } from "../../../api";
 
 const Order = (props) => {
-
+    const [subcategorylist , setSubcategorylist] = useState([]);
+    useLayoutEffect(()=>{
+        fnGetCategory()
+        .then((res)=>{
+            setSubcategorylist(res.data.categories);
+            console.log(subcategorylist);
+        })
+    },[]);
     const [subcategory , setSubcategory ] = useState(props.resultcleaning.subcategory);
     const [categorydate , setCategorydate ]= useState(props.resultcleaning.categorydate);
     const [categorytimeflex , setCategoryflex ] = useState(props.resultcleaning.categorytimeflex);
@@ -36,10 +44,7 @@ const Order = (props) => {
                 <Form.Group className="col-6">
                     <Form.Label>CATEGORY</Form.Label>
                     <select className="form-select" onChange={fnSubSelectChange} value={subcategory}>
-                        <option value="Removal cleaning">Removal cleaning</option>
-                        <option value="Recurring cleaning private">Recurring cleaning private</option>
-                        <option value="Recurring commercial cleaning">Recurring commercial cleaning</option>
-                        <option value="Facada cleaning">Facada cleaning</option>
+                        {subcategorylist.map( (list, index) => (<option key={index}>{list.type}</option>) )}
                     </select>
                 </Form.Group>
             </div>

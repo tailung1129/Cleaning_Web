@@ -13,3 +13,7 @@ export async function fnRegister ( postdata ) {
 export async function fnRequestSave ( postdata ) {
     return await axios.post('/request/save' , postdata)
 }
+
+export async function fnGetCategory () {
+    return await axios.get('/category')
+}
