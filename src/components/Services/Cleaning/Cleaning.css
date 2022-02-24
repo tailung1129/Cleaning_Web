@@ -21,3 +21,13 @@
     color: #0063aa;
 }
 
+.active_category {
+    background-color: #fc9e10!important;
+    color: white!important;
+}
+
+.active_button {
+    background-color: white!important;
+    color: gray!important;
+}
+

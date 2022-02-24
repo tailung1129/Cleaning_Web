@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
     <div>
       <HomeHeader />
       <HomeMenu />
-      <main className="login_bg">{children}</main>
+      <main >{children}</main>
       <Footer />
     </div>
   );

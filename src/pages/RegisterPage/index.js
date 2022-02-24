@@ -4,9 +4,11 @@ import "./Register.css"
 
 const RegisterPage = () => {
     return (
-        <RegisterLayout>
-            <RegiserForm />  
-        </RegisterLayout>
+        <div className="register_bg">
+            <RegisterLayout>
+                <RegiserForm />  
+            </RegisterLayout>
+        </div> 
     );
 }
 

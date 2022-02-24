@@ -10,8 +10,8 @@ const RegiserForm = () => {
     }
     return (
         <Container>
-            <Row>
-                <Col md={{span:6 , offset:3}} className="mt-4">
+            <Form id="register_form">
+                <Col md={{span:6 , offset:3}} className="mt-70px">
                     <Card className="border-0">
                         <Card.Header className="text-center h4 background-color-2">
                             <Form.Text className="text-white">Register as a partiner for free</Form.Text>
@@ -19,7 +19,7 @@ const RegiserForm = () => {
                         {showcurrent?<CardBody2 fnChangeShow={fnChangeShow} />:<CardBody1 fnChangeShow={fnChangeShow} />}
                     </Card>
                 </Col>
-            </Row>
+            </Form>
         </Container>
     );
 }

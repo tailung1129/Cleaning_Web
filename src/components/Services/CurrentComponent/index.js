@@ -1,8 +1,7 @@
 
 const CurrentComponent = (props) => {
-    console.log("dddd " , props.steps[0])
     return (
-    <div>
+    <div className="mt-5">
         {(props.steps[props.currentstep].component)}
     </div>
     );

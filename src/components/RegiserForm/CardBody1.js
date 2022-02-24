@@ -26,7 +26,7 @@ const CardBody1 = (props) => {
                 </Col>
             </Row>
             <Col className="text-center mt-3">
-                <Button onClick={()=>props.fnChangeShow()}>Further</Button>
+                <Button variant="warning" onClick={()=>props.fnChangeShow()}>Further</Button>
             </Col>
         </Card.Body>
     );

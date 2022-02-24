@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
 
 import Category from "./Category";
@@ -16,17 +16,138 @@ import CurrentComponent from "../CurrentComponent";
 import "./Cleaning.css";
 
 const Cleaning = () => {
-  const steps = [
-    { component: <Category /> },
-    { component: <Order /> },
-    { component: <Address /> },
-    { component: <Detail /> },
-    { component: <Pictures /> },
-    { component: <Preference /> },
-    { component: <Contact /> },
-    { component: <PhoneVerify />}
-  ];
+
   const [currentstep, setCurrentstep] = useState(1);
+  const [nextalarm, setNextalarm] = useState(-1);
+  const [resultcleaning, setResultcleaning] = useState({
+    category : "",
+    subcategory : "Removal cleaning",
+    categorydate : "",
+    categorytimeflex : "1 day",
+    address : "",
+    mimportant : "price",
+    floorarea : "100",
+    roomnum : "5",
+    pollution : "Very dirty",
+    whatclean : "Parkett",
+    additionalarea : "Garage",
+    orderdescription : "",
+    morefile : "",
+    offertype : "",
+    firstname : "",
+    lastname : "",
+    email : "",
+    phonenumber : "",
+    availabletime : "1pm-5pm"
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const ccategory = params.get('ccategory');
+    const newState = Object.assign({}, resultcleaning, { category:ccategory });            
+    setResultcleaning(newState);
+  },[])
+
+  const steps = [
+    {
+      component: (
+        <Category
+          nextalarm={nextalarm}
+          setNextalarm={setNextalarm}
+          currentstep={currentstep}
+          setCurrentstep={setCurrentstep}
+          resultcleaning={resultcleaning}
+          setResultcleaning={setResultcleaning}
+        />
+      ),
+    },
+    {
+      component: (
+        <Order
+          nextalarm={nextalarm}
+          setNextalarm={setNextalarm}
+          currentstep={currentstep}
+          setCurrentstep={setCurrentstep}
+          resultcleaning={resultcleaning}
+          setResultcleaning={setResultcleaning}
+        />
+      ),
+    },
+    {
+      component: (
+        <Address
+          nextalarm={nextalarm}
+          setNextalarm={setNextalarm}
+          currentstep={currentstep}
+          setCurrentstep={setCurrentstep}
+          resultcleaning={resultcleaning}
+          setResultcleaning={setResultcleaning}
+        />
+      ),
+    },
+    {
+      component: (
+        <Detail
+          nextalarm={nextalarm}
+          setNextalarm={setNextalarm}
+          currentstep={currentstep}
+          setCurrentstep={setCurrentstep}
+          resultcleaning={resultcleaning}
+          setResultcleaning={setResultcleaning}
+        />
+      ),
+    },
+    {
+      component: (
+        <Pictures
+          nextalarm={nextalarm}
+          setNextalarm={setNextalarm}
+          currentstep={currentstep}
+          setCurrentstep={setCurrentstep}
+          resultcleaning={resultcleaning}
+          setResultcleaning={setResultcleaning}
+        />
+      ),
+    },
+    {
+      component: (
+        <Preference
+          nextalarm={nextalarm}
+          setNextalarm={setNextalarm}
+          currentstep={currentstep}
+          setCurrentstep={setCurrentstep}
+          resultcleaning={resultcleaning}
+          setResultcleaning={setResultcleaning}
+        />
+      ),
+    },
+    {
+      component: (
+        <Contact
+          nextalarm={nextalarm}
+          setNextalarm={setNextalarm}
+          currentstep={currentstep}
+          setCurrentstep={setCurrentstep}
+          resultcleaning={resultcleaning}
+          setResultcleaning={setResultcleaning}
+        />
+      ),
+    },
+    {
+      component: (
+        <PhoneVerify
+          nextalarm={nextalarm}
+          setNextalarm={setNextalarm}
+          currentstep={currentstep}
+          setCurrentstep={setCurrentstep}
+          resultcleaning={resultcleaning}
+          setResultcleaning={setResultcleaning}
+        />
+      ),
+    },
+  ];
+
+  console.log("here is resultcleanig", resultcleaning);
   return (
     <div>
       <Container>
@@ -35,7 +156,7 @@ const Cleaning = () => {
         <Row className="my-4 py-4">
           {currentstep === 7 ? (
             <Col className="text-center">
-              <Button variant="danger">To verufy</Button>
+              <Button variant="danger" onClick={() => setNextalarm(currentstep)} >To verufy</Button>
             </Col>
           ) : (
             <Row>
@@ -51,7 +172,7 @@ const Cleaning = () => {
               <Col>
                 <Button
                   variant="warning"
-                  onClick={() => setCurrentstep(currentstep + 1)}
+                  onClick={() => setNextalarm(currentstep)}
                 >
                   Next
                 </Button>

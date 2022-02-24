@@ -1,3 +1,5 @@
 .register_bg {
     background: url('/src/img/login_bg.jpg') no-repeat;
+    background-size: cover;
+    height: 850px;
 }
