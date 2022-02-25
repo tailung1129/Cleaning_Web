@@ -1,7 +1,11 @@
-import React , {useState} from "react"
+import React , {useState } from "react"
 import { Form , Button , ButtonGroup , Row } from 'react-bootstrap'
+import Autocom from "./Autocom"
 
 const Address = ( props ) => {
+
+
+    
     const [address , setAddress] = useState(props.resultcleaning.address);
     const [roomnum , setRoomnum] = useState(props.resultcleaning.roomnum);
     const [mimportant , setMimportant] = useState(props.resultcleaning.mimportant);
@@ -42,6 +46,7 @@ const Address = ( props ) => {
     return (
         <Row className="text-color-1">
             <Row>
+            <Autocom />
                 <Form.Group className="col-6">
                     <Form.Label>ADDRESS-(TYPE&SELECT ADDRESS)</Form.Label>
                     <Form.Control type="text" onChange={fnAddress} value={address} />

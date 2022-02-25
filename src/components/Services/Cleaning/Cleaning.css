@@ -31,3 +31,9 @@
     color: gray!important;
 }
 
+.preference_item:hover {
+    color:#fc9e10;
+    background-color: #e2dcc0;
+    cursor: pointer;
+}
+
