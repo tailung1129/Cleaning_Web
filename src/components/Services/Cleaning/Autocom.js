@@ -1,4 +1,3 @@
-import { ChangeEvent } from "react";
 import usePlacesAutocomplete from "use-places-autocomplete";
 import {
   Combobox,

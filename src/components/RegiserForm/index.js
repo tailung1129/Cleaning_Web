@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container , Card , Row , Col , Form } from "react-bootstrap"
+import { Container , Card , Col , Form } from "react-bootstrap"
 import CardBody1 from "./CardBody1";
 import CardBody2 from "./CardBody2"
 

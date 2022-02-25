@@ -17,7 +17,7 @@ import "./Cleaning.css";
 
 const Cleaning = () => {
 
-  const [currentstep, setCurrentstep] = useState(1);
+  const [currentstep, setCurrentstep] = useState(4);
   const [nextalarm, setNextalarm] = useState(-1);
   const [resultcleaning, setResultcleaning] = useState({
     category : "",
@@ -38,7 +38,8 @@ const Cleaning = () => {
     lastname : "",
     email : "",
     phonenumber : "",
-    availabletime : "1pm-5pm"
+    availabletime : "1pm-5pm",
+    fileUrl : null,
   });
 
   useEffect(() => {

@@ -38,6 +38,14 @@ const Order = (props) => {
             props.setCurrentstep(props.currentstep+1);
         }   
     }
+
+    const disablePastDate = () => {
+        const today = new Date();
+        const dd = String(today.getDate() + 1).padStart(2, "0");
+        const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+        const yyyy = today.getFullYear();
+        return yyyy + "-" + mm + "-" + dd;
+    };
     return (
         <div className="text-color-1">
             <div>
@@ -52,7 +60,7 @@ const Order = (props) => {
                 <div className="col-6">
                     <Form.Group>
                         <Form.Label>DATE</Form.Label>
-                        <Form.Control type="date" onChange={fnCategoryDate} value={categorydate} />
+                        <Form.Control type="date" onChange={fnCategoryDate} value={categorydate} min={disablePastDate()} />
                     </Form.Group>
                 </div>
                 <div className="col-6">
