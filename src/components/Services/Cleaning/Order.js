@@ -4,6 +4,7 @@ import { fnGetCategory } from "../../../api";
 
 const Order = (props) => {
     const [subcategorylist , setSubcategorylist] = useState([]);
+
     useLayoutEffect(()=>{
         fnGetCategory()
         .then((res)=>{
@@ -27,7 +28,7 @@ const Order = (props) => {
     {
         if(categorydate==="")
         {
-            console.log("here currentid null");
+            console.log("here currentid null" , categorydate===""&&props.nextalarm===props.currentstep);
             props.setNextalarm(-1);
         }
         else
@@ -60,7 +61,7 @@ const Order = (props) => {
                 <div className="col-6">
                     <Form.Group>
                         <Form.Label>DATE</Form.Label>
-                        <Form.Control type="date" onChange={fnCategoryDate} value={categorydate} min={disablePastDate()} />
+                        <Form.Control type="date" onChange={fnCategoryDate} value={categorydate} min={disablePastDate()} className={(categorydate==="")?"border border-danger":""} />
                     </Form.Group>
                 </div>
                 <div className="col-6">
@@ -71,7 +72,7 @@ const Order = (props) => {
                                 <Button variant="secondary" className={categorytimeflex==="1 day"?"active_button":""} value="1 day">1 day</Button>
                                 <Button variant="secondary" className={categorytimeflex==="1 week"?"active_button":""} value="1 week">1 week</Button>
                                 <Button variant="secondary" className={categorytimeflex==="1 month"?"active_button":""} value="1 month">1 month</Button>
-                                <Button variant="secondary" className={categorytimeflex==="1 No"?"active_button":""} value="No">No</Button>
+                                <Button variant="secondary" className={categorytimeflex==="No"?"active_button":""} value="No">No</Button>
                             </ButtonGroup>
                         </div>
                     </Form.Group>
