@@ -52,7 +52,7 @@ const Order = (props) => {
                 <Form.Group className="col-6">
                     <Form.Label>CATEGORY</Form.Label>
                     <select className="form-select" onChange={fnSubSelectChange} value={subcategory}>
-                        {subcategorylist.map( (list, index) => (<option key={index}>{list.type}</option>) )}
+                        {subcategorylist.map( (list, index) => (<option key={index} value={list.id}>{list.type}</option>) )}
                     </select>
                 </Form.Group>
             </div>

@@ -17,11 +17,11 @@ import "./Cleaning.css";
 
 const Cleaning = () => {
 
-  const [currentstep, setCurrentstep] = useState(4);
+  const [currentstep, setCurrentstep] = useState(1);
   const [nextalarm, setNextalarm] = useState(-1);
   const [resultcleaning, setResultcleaning] = useState({
     category : "",
-    subcategory : "Removal cleaning",
+    subcategory : "",
     categorydate : "",
     categorytimeflex : "1 day",
     address : "",

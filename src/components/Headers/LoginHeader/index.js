@@ -11,7 +11,7 @@ const LoginHeader = () => {
               to="/"
               className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-white text-decoration-none ps-100 display-6"
             >
-              TestCom
+              Compare
             </Link>
         </header>
       </div>

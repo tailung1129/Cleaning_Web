@@ -46,7 +46,7 @@ const Address = ( props ) => {
     return (
         <Row className="text-color-1">
             <Row>
-            <Autocom />
+            {/* <Autocom /> */}
                 <Form.Group className="col-6">
                     <Form.Label>ADDRESS-(TYPE&SELECT ADDRESS)</Form.Label>
                     <Form.Control type="text" onChange={fnAddress} value={address} />

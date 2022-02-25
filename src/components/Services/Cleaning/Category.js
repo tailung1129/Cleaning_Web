@@ -1,6 +1,6 @@
 import "./Cleaning.css"
 import { Card } from "react-bootstrap"
-import { useState , useEffect } from "react"
+import { useState } from "react"
 import { BsBuilding , BsHouseFill , BsFileEarmarkText , BsQuestionLg } from "react-icons/bs"
 
 const Category = (props) => {

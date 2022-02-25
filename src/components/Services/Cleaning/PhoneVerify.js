@@ -25,7 +25,7 @@ const PhoneVerify = (props) => {
         else {
             var matches = availabletime.match(/\d+/g);
             var postdata = {
-                categoryId: "6217ad062553ae7955a86182",
+                categoryId: preresult.subcategory,
                 user: { firstname: preresult.firstname, 
                         lastname: preresult.lastname,
                         email: preresult.email,
@@ -36,8 +36,8 @@ const PhoneVerify = (props) => {
                 purchaseGuarantee: "",
                 objectArea: parseInt(preresult.floorarea),
                 pollution: preresult.pollution,
-                areas: [preresult.additionalarea],
-                extras: "",
+                areas: [preresult.whatclean],
+                extras: preresult.additionalarea,
                 address: {
                     number: "",
                     addressLine1: preresult.address,
