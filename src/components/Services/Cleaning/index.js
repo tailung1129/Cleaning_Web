@@ -15,15 +15,17 @@ import CurrentComponent from "../CurrentComponent"
 
 import { useSelector , useDispatch } from "react-redux"
 import { prevclickAction } from "../../../redux/actions/prevAction"
+import { nextclickAction } from "../../../redux/actions/nextAction"
 
 import "./Cleaning.css";
 
 const Cleaning = () => {
   const dispatch = useDispatch();
-  const flagprev = useSelector(state => state.prev);
-  console.log("here is flag prev " , flagprev);
   const fnClickPrev = () => {
     dispatch(prevclickAction());
+  }
+  const fnClickNext = () => {
+    dispatch(nextclickAction())
   }
 
   const [currentstep, setCurrentstep] = useState(1);
@@ -179,7 +181,7 @@ const Cleaning = () => {
               <Col>
                 <Button
                   variant="warning"
-                  onClick={() => setNextalarm(currentstep)}
+                  onClick={fnClickNext}
                 >
                   Next
                 </Button>

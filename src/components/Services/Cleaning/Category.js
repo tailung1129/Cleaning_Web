@@ -1,24 +1,31 @@
 import "./Cleaning.css"
 import { Card } from "react-bootstrap"
-import { useState } from "react"
+import { useState , useLayoutEffect } from "react"
 import { BsBuilding , BsHouseFill , BsFileEarmarkText , BsQuestionLg } from "react-icons/bs"
+
+import { useDispatch , useSelector } from "react-redux"
+import { initprevAction } from "../../../redux/actions/prevAction"
 
 const Category = (props) => {
 
+    const dispatch = useDispatch();
+    const flagnext = useSelector( state => state.next );
+    useLayoutEffect(()=>{
+        dispatch(initprevAction());
+    },[]);
+    console.log("here is category flagnext" , flagnext);
     const [currentid , setCurrentid ] = useState(props.resultcleaning.category);    
     
-    if(props.nextalarm===props.currentstep)
+    if(flagnext)
     {
         if(currentid==="")
         {
             console.log("here currentid null");
-            props.setNextalarm(-1);
         }
         else
         {
             const newState = Object.assign({}, props.resultcleaning, {category:currentid});            
             props.setResultcleaning(newState);
-            props.setNextalarm(-1);
             props.setCurrentstep(props.currentstep+1);
         }
     }
