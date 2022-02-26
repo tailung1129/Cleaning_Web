@@ -1,15 +1,16 @@
 import { CLICKPREV , INITPREV } from "../types/prevtypes"
 
-const initstate = {
-    ciickprev : true , 
-    initprev : false
+export const prevclickAction = () => dispatch => {
+    dispatch({
+        type : CLICKPREV,
+        payload : true
+    })
+    console.log("here is prev click action")
 }
 
-export const prev = ( state = initstate , action ) =>{
-    switch (action.type) {
-        case CLICKPREV:
-            return state.ciickprev
-        case INITPREV:
-            return state.initprev
-    }
+export const initprevAction = () => dispatch => {
+    dispatch({
+        type : INITPREV,
+        payload : false
+    })
 }

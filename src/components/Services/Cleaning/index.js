@@ -1,23 +1,32 @@
-import React, { useState , useEffect } from "react";
-import { Container, Button, Row, Col } from "react-bootstrap";
+import React, { useState , useEffect } from "react"
+import { Container, Button, Row, Col } from "react-bootstrap"
 
-import Category from "./Category";
-import Order from "./Order";
-import Address from "./Address";
-import Detail from "./Detail";
-import Pictures from "./Pictures";
-import Preference from "./Preference";
-import Contact from "./Contact";
-import PhoneVerify from "./PhoneVerify";
+import Category from "./Category"
+import Order from "./Order"
+import Address from "./Address"
+import Detail from "./Detail"
+import Pictures from "./Pictures"
+import Preference from "./Preference"
+import Contact from "./Contact"
+import PhoneVerify from "./PhoneVerify"
 
-import CustomProgressBar from "../CustomProgressBar";
-import CurrentComponent from "../CurrentComponent";
+import CustomProgressBar from "../CustomProgressBar"
+import CurrentComponent from "../CurrentComponent"
+
+import { useSelector , useDispatch } from "react-redux"
+import { prevclickAction } from "../../../redux/actions/prevAction"
 
 import "./Cleaning.css";
 
 const Cleaning = () => {
+  const dispatch = useDispatch();
+  const flagprev = useSelector(state => state.prev);
+  console.log("here is flag prev " , flagprev);
+  const fnClickPrev = () => {
+    dispatch(prevclickAction());
+  }
 
-  const [currentstep, setCurrentstep] = useState(6);
+  const [currentstep, setCurrentstep] = useState(1);
   const [nextalarm, setNextalarm] = useState(-1);
   const [resultcleaning, setResultcleaning] = useState({
     category : "",
@@ -161,7 +170,7 @@ const Cleaning = () => {
               <Col className="text-end">
                 <Button
                   variant="warning"
-                  onClick={() => setCurrentstep(currentstep - 1)}
+                  onClick={fnClickPrev}
                   disabled={currentstep === 0}
                 >
                   Prev

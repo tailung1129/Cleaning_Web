@@ -8,8 +8,10 @@ const initstate = {
 const prevReducer = ( state = initstate , action ) =>{
     switch (action.type) {
         case CLICKPREV:
-            return state.ciickprev
+            return action.payload
         case INITPREV:
+            return action.payload
+        default :
             return state.initprev
     }
 }

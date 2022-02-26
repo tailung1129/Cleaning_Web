@@ -1,17 +1,22 @@
-import React , { useState , useLayoutEffect } from "react"
+import React , { useState , useLayoutEffect ,  } from "react"
 import { Form , Button , ButtonGroup } from 'react-bootstrap'
 import { fnGetCategory } from "../../../api";
+import { useSelector , useDispatch } from "react-redux"
+import { initprevAction } from "../../../redux/actions/prevAction";
 
 const Order = (props) => {
     const [subcategorylist , setSubcategorylist] = useState([]);
     const [flagdate , setFlagdate] = useState(false);
+    const flagprev = useSelector(state => state.prev);
+    const dispatch = useDispatch();
 
     useLayoutEffect(()=>{
         fnGetCategory()
         .then((res)=>{
             setSubcategorylist(res.data.categories);
             console.log(subcategorylist);
-        })
+        });
+        dispatch(initprevAction());
     },[]);
     const [subcategory , setSubcategory ] = useState(props.resultcleaning.subcategory);
     const [categorydate , setCategorydate ]= useState(props.resultcleaning.categorydate);
@@ -26,6 +31,13 @@ const Order = (props) => {
     const fnCategoryTimeFlex = (e) => {
         setCategoryflex(e.target.value);
     }
+    if(flagprev === true)
+    {
+        const newState = Object.assign({}, props.resultcleaning, {subcategory:subcategory , categorydate:categorydate , categorytimeflex:categorytimeflex});            
+        props.setResultcleaning(newState);
+        props.setCurrentstep(props.currentstep-1);
+    }
+
     if(props.nextalarm===props.currentstep)
     {
         if(categorydate==="")
