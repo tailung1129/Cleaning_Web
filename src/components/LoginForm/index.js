@@ -24,8 +24,8 @@ const LoginForm = () => {
       fnLogin(postdata)
         .then((res) => {
             console.log(res.data);
-            // if(res.data.response_description==="Login Success")
-              // window.location.href = "/account/requests"
+            if(res.data.response_description==="Login Success")
+              window.location.href = "/account/requests"
         }).catch((error) => {
             console.log(error)
         });
