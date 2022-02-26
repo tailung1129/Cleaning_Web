@@ -4,6 +4,7 @@ import { fnGetCategory } from "../../../api";
 
 const Order = (props) => {
     const [subcategorylist , setSubcategorylist] = useState([]);
+    const [flagdate , setFlagdate] = useState(false);
 
     useLayoutEffect(()=>{
         fnGetCategory()
@@ -20,6 +21,7 @@ const Order = (props) => {
     }
     const fnCategoryDate = (e) => {
         setCategorydate(e.target.value);
+        setFlagdate(false);
     }
     const fnCategoryTimeFlex = (e) => {
         setCategoryflex(e.target.value);
@@ -28,8 +30,10 @@ const Order = (props) => {
     {
         if(categorydate==="")
         {
-            console.log("here currentid null" , categorydate===""&&props.nextalarm===props.currentstep);
+            console.log("here currentid null");
             props.setNextalarm(-1);
+            if(flagdate===false)
+                setFlagdate(true);
         }
         else
         {
@@ -61,7 +65,7 @@ const Order = (props) => {
                 <div className="col-6">
                     <Form.Group>
                         <Form.Label>DATE</Form.Label>
-                        <Form.Control type="date" onChange={fnCategoryDate} value={categorydate} min={disablePastDate()} className={(categorydate==="")?"border border-danger":""} />
+                        <Form.Control type="date" onChange={fnCategoryDate} value={categorydate} min={disablePastDate()} className={flagdate&&"border border-danger"} />
                     </Form.Group>
                 </div>
                 <div className="col-6">

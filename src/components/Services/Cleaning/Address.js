@@ -4,16 +4,16 @@ import Autocom from "./Autocom"
 
 const Address = ( props ) => {
 
-
-    
     const [address , setAddress] = useState(props.resultcleaning.address);
     const [roomnum , setRoomnum] = useState(props.resultcleaning.roomnum);
     const [mimportant , setMimportant] = useState(props.resultcleaning.mimportant);
     const [floorarea , setFloorarea] = useState(props.resultcleaning.floorarea);
     const [pollution , setPollution] = useState(props.resultcleaning.pollution);
+    const [addressflag , setAddresflag] = useState(false);
 
     const fnAddress = ( e ) => {
         setAddress(e.target.value);
+        setAddresflag(false);
     }
     const fnMImportant = ( e ) => {
         setMimportant(e.target.value);
@@ -27,12 +27,21 @@ const Address = ( props ) => {
     const fnPollution = ( e ) => {
         setPollution(e.target.value);
     }
+    const fnAdd = () => {
+        setFloorarea(parseInt(floorarea)+1);
+    }
+    const fnSub = () => {
+        setFloorarea(parseInt(floorarea)-1);
+    }
+
     if(props.nextalarm===props.currentstep)
     {
         if(address==="")
         {
             console.log("here currentid null");
             props.setNextalarm(-1);
+            if(addressflag===false)
+                setAddresflag(true);
         }
         else
         {
@@ -46,10 +55,10 @@ const Address = ( props ) => {
     return (
         <Row className="text-color-1">
             <Row>
-            <Autocom />
+                <Autocom />
                 <Form.Group className="col-6">
                     <Form.Label>ADDRESS-(TYPE&SELECT ADDRESS)</Form.Label>
-                    <Form.Control type="text" onChange={fnAddress} value={address} />
+                    <Form.Control type="text" onChange={fnAddress} value={address} className={addressflag&&"border border-danger"} />
                 </Form.Group>
                 <Form.Group className="col-3">
                     <Form.Label>WHAT IS MORE IMPORTANT</Form.Label>
@@ -61,9 +70,9 @@ const Address = ( props ) => {
                 <Form.Group className="col-3">
                     <Form.Label>FLOOR AREA IN M2</Form.Label>
                     <ButtonGroup>
-                        <Button variant="secondary">-</Button>
-                        <Form.Control type="text" onChange={fnFloorArea} value={floorarea} />
-                        <Button variant="secondary">+</Button>
+                        <Button variant="secondary" onClick={fnSub}> - </Button>
+                        <Form.Control type="text" onChange={fnFloorArea} value={floorarea} className="text-end" />
+                        <Button variant="secondary" onClick={fnAdd} > + </Button>
                     </ButtonGroup>
                 </Form.Group>
             </Row>

@@ -17,7 +17,7 @@ import "./Cleaning.css";
 
 const Cleaning = () => {
 
-  const [currentstep, setCurrentstep] = useState(1);
+  const [currentstep, setCurrentstep] = useState(6);
   const [nextalarm, setNextalarm] = useState(-1);
   const [resultcleaning, setResultcleaning] = useState({
     category : "",
@@ -33,7 +33,7 @@ const Cleaning = () => {
     additionalarea : "Garage",
     orderdescription : "",
     morefile : "",
-    offertype : "",
+    offertype : "Rough",
     firstname : "",
     lastname : "",
     email : "",

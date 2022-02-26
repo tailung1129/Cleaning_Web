@@ -10,17 +10,20 @@ const PhoneVerify = (props) => {
     const [availabletime, setAvailabletime] = useState(
         props.resultcleaning.availabletime
     );
+    const [flagphonenumber , setFlagphonenumber] = useState(false);
 
     const fnPhoneNumber = (e) => {
         setPhonenumber(e.target.value);
+        setFlagphonenumber(false);
     };
     const fnAvailabletime = (e) => {
         setAvailabletime(e.target.value);
     };
 
     const fnVerifyPhone = () => {
-        if (phonenumber === "") {
+        if (phonenumber === "" ) {
             console.log("here currentid null");
+            setFlagphonenumber(true);
         } 
         else {
             var matches = availabletime.match(/\d+/g);
@@ -81,6 +84,7 @@ const PhoneVerify = (props) => {
                 type="tel"
                 value={phonenumber}
                 onChange={fnPhoneNumber}
+                className={flagphonenumber&&"border border-danger"}
             ></Form.Control>
             </Form.Group>
             <Form.Group className="pt-4">
