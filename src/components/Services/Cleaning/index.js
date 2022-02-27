@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from "react"
-import { Container, Button, Row, Col } from "react-bootstrap"
+import { Container } from "react-bootstrap"
 
 import Category from "./Category"
 import Order from "./Order"
@@ -13,20 +13,9 @@ import PhoneVerify from "./PhoneVerify"
 import CustomProgressBar from "../CustomProgressBar"
 import CurrentComponent from "../CurrentComponent"
 
-import { useDispatch } from "react-redux"
-import { prevclickAction } from "../../../redux/actions/prevAction"
-import { nextclickAction } from "../../../redux/actions/nextAction"
-
 import "./Cleaning.css";
 
 const Cleaning = () => {
-  const dispatch = useDispatch();
-  const fnClickPrev = () => {
-    dispatch(prevclickAction());
-  }
-  const fnClickNext = () => {
-    dispatch(nextclickAction())
-  }
 
   const [currentstep, setCurrentstep] = useState(1);
   const [nextalarm, setNextalarm] = useState(-1);
@@ -165,30 +154,6 @@ const Cleaning = () => {
       <Container>
         <CustomProgressBar currentstate={currentstep * 15} />
         <CurrentComponent steps={steps} currentstep={currentstep} />
-        <Row className="my-4 py-4">
-          {currentstep === 7 ? ""           
-           : (
-            <Row>
-              <Col className="text-end">
-                <Button
-                  variant="warning"
-                  onClick={fnClickPrev}
-                  disabled={currentstep === 0}
-                >
-                  Prev
-                </Button>
-              </Col>
-              <Col>
-                <Button
-                  variant="warning"
-                  onClick={fnClickNext}
-                >
-                  Next
-                </Button>
-              </Col>
-            </Row>
-          )}
-        </Row>
       </Container>
     </div>
   );
