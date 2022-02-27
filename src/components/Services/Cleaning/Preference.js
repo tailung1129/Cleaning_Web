@@ -1,25 +1,20 @@
 import React , {useState} from "react"
-import { Form , Row , Col } from 'react-bootstrap'
+import { Form , Row , Col , Button } from 'react-bootstrap'
 import { BsTelephoneFill , BsCheck} from "react-icons/bs"
 
 const Preference = ( props ) => {
 
     const [offertype , setOffertype] = useState(props.resultcleaning.offertype);
 
-    if(props.nextalarm===props.currentstep)
-    {
-        if(offertype==="")
-        {
-            console.log("here currentid null");
-            props.setNextalarm(-1);
-        }
-        else
-        {
-            const newState = Object.assign({}, props.resultcleaning, {offertype:offertype});            
-            props.setResultcleaning(newState);
-            props.setNextalarm(-1);
-            props.setCurrentstep(props.currentstep+1);
-        }   
+    const fnClickPrev = () => {
+        const newState = Object.assign({}, props.resultcleaning, {offertype:offertype});            
+        props.setResultcleaning(newState);
+        props.setCurrentstep(props.currentstep-1);
+    }
+    const fnClickNext = () => {
+        const newState = Object.assign({}, props.resultcleaning, {offertype:offertype});            
+        props.setResultcleaning(newState);
+        props.setCurrentstep(props.currentstep+1);
     }
     return (
         <div className="text-color-1">
@@ -43,6 +38,24 @@ const Preference = ( props ) => {
                     </Col>
                 </Row>
             </Form.Group>
+            <Row className="my-4 py-4">
+                <Col className="text-end">
+                    <Button
+                        variant="warning"
+                        onClick={fnClickPrev}
+                    >
+                        Prev
+                    </Button>
+                </Col>
+                <Col>
+                    <Button
+                        variant="warning"
+                        onClick={fnClickNext}
+                    >
+                        Next
+                    </Button>
+                </Col>
+            </Row>
         </div>
     );
 }

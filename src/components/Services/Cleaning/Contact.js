@@ -1,5 +1,5 @@
 import React , {useState} from "react"
-import { Form , Row } from 'react-bootstrap'
+import { Form , Row , Col , Button } from 'react-bootstrap'
 
 const Contact = ( props ) => {
 
@@ -22,13 +22,14 @@ const Contact = ( props ) => {
         setEmail(e.target.value);
         setFlagemail(false);
     }
-
-    if(props.nextalarm===props.currentstep)
-    {
+    const fnClickPrev = () => {
+        const newState = Object.assign({}, props.resultcleaning, {firstname:firstname , lastname:lastname , email:email});            
+        props.setResultcleaning(newState);
+        props.setCurrentstep(props.currentstep-1);
+    }
+    const fnClickNext = () => {
         if(firstname===""||lastname===""||email==="")
         {
-            console.log("here currentid null");
-            props.setNextalarm(-1);
             if(firstname===""&&flagfirstname===false)
                 setFlagfirstname(true);
             if(lastname===""&&flaglastname===false)
@@ -40,28 +41,47 @@ const Contact = ( props ) => {
         {
             const newState = Object.assign({}, props.resultcleaning, {firstname:firstname , lastname:lastname , email:email});            
             props.setResultcleaning(newState);
-            props.setNextalarm(-1);
             props.setCurrentstep(props.currentstep+1);
         }   
     }
     return (
-        <Row className="row text-color-1">
-            <Form.Group className="text-center mb-5 h4">
-                <Form.Label>Congratulations, suitable provider found. To whom should the offer be made out?</Form.Label>
-            </Form.Group>
-            <Form.Group className="col-4">
-                <Form.Label >FIRST NAME</Form.Label>
-                <Form.Control type="text" value={firstname} onChange={fnFirstName} className={flagfirstname&&"border border-danger"} />
-            </Form.Group>
-            <Form.Group className="col-4">
-                <Form.Label >LAST NAME</Form.Label>
-                <Form.Control type="text" value={lastname} onChange={fnLastName} className={flaglastname&&"border border-danger"} />
-            </Form.Group>
-            <Form.Group className="col-4">
-                <Form.Label >E-MAIL</Form.Label>
-                <Form.Control type="email" value={email} onChange={fnEmail} className={flagemail&&"border border-danger"} />
-            </Form.Group>
-        </Row>
+        <div>
+            <Row className="row text-color-1">
+                <Form.Group className="text-center mb-5 h4">
+                    <Form.Label>Congratulations, suitable provider found. To whom should the offer be made out?</Form.Label>
+                </Form.Group>
+                <Form.Group className="col-4">
+                    <Form.Label >FIRST NAME</Form.Label>
+                    <Form.Control type="text" value={firstname} onChange={fnFirstName} className={flagfirstname&&"border border-danger"} />
+                </Form.Group>
+                <Form.Group className="col-4">
+                    <Form.Label >LAST NAME</Form.Label>
+                    <Form.Control type="text" value={lastname} onChange={fnLastName} className={flaglastname&&"border border-danger"} />
+                </Form.Group>
+                <Form.Group className="col-4">
+                    <Form.Label >E-MAIL</Form.Label>
+                    <Form.Control type="email" value={email} onChange={fnEmail} className={flagemail&&"border border-danger"} />
+                </Form.Group>
+            </Row>
+            <Row className="my-4 py-4">
+                <Col className="text-end">
+                    <Button
+                        variant="warning"
+                        onClick={fnClickPrev}
+                    >
+                        Prev
+                    </Button>
+                </Col>
+                <Col>
+                    <Button
+                        variant="warning"
+                        onClick={fnClickNext}
+                    >
+                        Next
+                    </Button>
+                </Col>
+            </Row>
+        </div>
     );
 }
 

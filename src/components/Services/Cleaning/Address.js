@@ -1,5 +1,5 @@
 import React , {useState } from "react"
-import { Form , Button , ButtonGroup , Row } from 'react-bootstrap'
+import { Form , Button , ButtonGroup , Row , Col } from 'react-bootstrap'
 import Autocom from "./Autocom"
 
 const Address = ( props ) => {
@@ -33,21 +33,20 @@ const Address = ( props ) => {
     const fnSub = () => {
         setFloorarea(parseInt(floorarea)-1);
     }
-
-    if(props.nextalarm===props.currentstep)
-    {
+    const fnClickPrev = () => {
+        const newState = Object.assign({}, props.resultcleaning, {address:address , roomnum:roomnum , mimportant:mimportant , floorarea:floorarea , pollution:pollution});            
+        props.setResultcleaning(newState);
+        props.setCurrentstep(props.currentstep-1);
+    }
+    const fnClickNext = () => {
         if(address==="")
         {
-            console.log("here currentid null");
-            props.setNextalarm(-1);
-            if(addressflag===false)
-                setAddresflag(true);
+            setAddresflag(true);
         }
         else
         {
             const newState = Object.assign({}, props.resultcleaning, {address:address , roomnum:roomnum , mimportant:mimportant , floorarea:floorarea , pollution:pollution});            
             props.setResultcleaning(newState);
-            props.setNextalarm(-1);
             props.setCurrentstep(props.currentstep+1);
         }   
     }
@@ -55,7 +54,7 @@ const Address = ( props ) => {
     return (
         <Row className="text-color-1">
             <Row>
-                <Autocom />
+                {/* <Autocom /> */}
                 <Form.Group className="col-6">
                     <Form.Label>ADDRESS-(TYPE&SELECT ADDRESS)</Form.Label>
                     <Form.Control type="text" onChange={fnAddress} value={address} className={addressflag&&"border border-danger"} />
@@ -96,6 +95,24 @@ const Address = ( props ) => {
                         <Button variant="secondary" className={pollution==="Little dirty"?"active_button":""} value="Little dirty">Little dirty</Button>
                     </ButtonGroup>
                 </Form.Group>
+            </Row>
+            <Row className="my-4 py-4">
+                <Col className="text-end">
+                    <Button
+                        variant="warning"
+                        onClick={fnClickPrev}
+                    >
+                        Prev
+                    </Button>
+                </Col>
+                <Col>
+                    <Button
+                        variant="warning"
+                        onClick={fnClickNext}
+                    >
+                        Next
+                    </Button>
+                </Col>
             </Row>
         </Row>
     );

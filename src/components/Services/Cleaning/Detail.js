@@ -1,5 +1,5 @@
 import React , { useState } from "react"
-import { Form } from 'react-bootstrap'
+import { Form , Row , Col , Button } from 'react-bootstrap'
 
 const Detail = ( props ) => {
     
@@ -16,21 +16,15 @@ const Detail = ( props ) => {
     const fnOrderdesciption = ( e ) => {
         setOrderdescription(e.target.value);
     }
-
-    if(props.nextalarm===props.currentstep)
-    {
-        if(orderdescription==="")
-        {
-            console.log("here currentid null");
-            props.setNextalarm(-1);
-        }
-        else
-        {
+    const fnClickPrev = () => {
+        const newState = Object.assign({}, props.resultcleaning, {whatclean:whatclean , additionalarea:additionalarea , orderdescription:orderdescription});            
+        props.setResultcleaning(newState);
+        props.setCurrentstep(props.currentstep-1);
+    }
+    const fnClickNext = () => {
             const newState = Object.assign({}, props.resultcleaning, {whatclean:whatclean , additionalarea:additionalarea , orderdescription:orderdescription});            
             props.setResultcleaning(newState);
-            props.setNextalarm(-1);
             props.setCurrentstep(props.currentstep+1);
-        }   
     }
 
     return (
@@ -59,6 +53,24 @@ const Detail = ( props ) => {
                 <Form.Label>ORDER DESCRIPTION</Form.Label>
                 <Form.Control as="textarea" value={orderdescription} rows={5} placeholder="Description: Requests with a detailed description receive significantly more, faster and more precise offers!" onChange={fnOrderdesciption} />
             </Form.Group>
+            <Row className="my-4 py-4">
+                <Col className="text-end">
+                    <Button
+                        variant="warning"
+                        onClick={fnClickPrev}
+                    >
+                        Prev
+                    </Button>
+                </Col>
+                <Col>
+                    <Button
+                        variant="warning"
+                        onClick={fnClickNext}
+                    >
+                        Next
+                    </Button>
+                </Col>
+            </Row>
         </div>
     );
 }
