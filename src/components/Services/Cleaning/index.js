@@ -13,7 +13,7 @@ import PhoneVerify from "./PhoneVerify"
 import CustomProgressBar from "../CustomProgressBar"
 import CurrentComponent from "../CurrentComponent"
 
-import { useSelector , useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { prevclickAction } from "../../../redux/actions/prevAction"
 import { nextclickAction } from "../../../redux/actions/nextAction"
 
@@ -181,7 +181,7 @@ const Cleaning = () => {
               <Col>
                 <Button
                   variant="warning"
-                  onClick={()=>fnClickNext()}
+                  onClick={fnClickNext}
                 >
                   Next
                 </Button>

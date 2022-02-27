@@ -9,23 +9,25 @@ import { initprevAction } from "../../../redux/actions/prevAction"
 const Category = (props) => {
 
     const dispatch = useDispatch();
-    const flagnext = useSelector(state => state.next);
-    dispatch(initprevAction());
-    // useLayoutEffect(()=>{
-    //     dispatch(initprevAction());
-    // },[]);
-    const [currentid , setCurrentid ] = useState(props.resultcleaning.category);
     
-    if(flagnext)
+    useLayoutEffect(()=>{
+        dispatch(initprevAction());
+    },[]);
+
+    const [currentid , setCurrentid ] = useState(props.resultcleaning.category);    
+    
+    if(props.nextalarm===props.currentstep)
     {
         if(currentid==="")
         {
             console.log("here currentid null");
+            props.setNextalarm(-1);
         }
         else
         {
             const newState = Object.assign({}, props.resultcleaning, {category:currentid});            
             props.setResultcleaning(newState);
+            props.setNextalarm(-1);
             props.setCurrentstep(props.currentstep+1);
         }
     }

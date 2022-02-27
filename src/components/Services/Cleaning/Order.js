@@ -1,4 +1,4 @@
-import React , { useState , useLayoutEffect ,  } from "react"
+import React , { useState , useLayoutEffect } from "react"
 import { Form , Button , ButtonGroup } from 'react-bootstrap'
 import { fnGetCategory } from "../../../api"
 import { useSelector , useDispatch } from "react-redux"
@@ -7,34 +7,22 @@ import { initnextAction } from "../../../redux/actions/nextAction"
 
 
 const Order = (props) => {
-    const [subcategorylist , setSubcategorylist] = useState([]);
-    const [flagdate , setFlagdate] = useState(false);
-    const flagprev = useSelector(state => state.prev);
+
     const dispatch = useDispatch();
+
+    const flagprev = useSelector(state => state.prev);
+    const flagnext = useSelector(state => state.next);
+
+    dispatch(initprevAction());
+    dispatch(initnextAction());
+
     const [subcategory , setSubcategory ] = useState(props.resultcleaning.subcategory);
     const [categorydate , setCategorydate ]= useState(props.resultcleaning.categorydate);
     const [categorytimeflex , setCategoryflex ] = useState(props.resultcleaning.categorytimeflex);
-    dispatch(initprevAction());
-    dispatch(initnextAction());
-    if(flagprev === true)
-    {
-        const newState = Object.assign({}, props.resultcleaning, {subcategory:subcategory , categorydate:categorydate , categorytimeflex:categorytimeflex});            
-        props.setResultcleaning(newState);
-        props.setCurrentstep(props.currentstep-1);
-    }
 
-    console.log("here is order current props.currentstep " , props.currentstep);
-    console.log("here is order current props.currentstep " , flagprev);
+    const [subcategorylist , setSubcategorylist] = useState([]);
+    const [flagdate , setFlagdate] = useState(false);
 
-    useLayoutEffect(()=>{
-        fnGetCategory()
-        .then((res)=>{
-            setSubcategorylist(res.data.categories);
-            console.log(subcategorylist);
-        });
-        // dispatch(initprevAction());
-    },[]);
-    
     const fnSubSelectChange = (e) => {
         setSubcategory(e.target.value);
     }
@@ -45,33 +33,44 @@ const Order = (props) => {
     const fnCategoryTimeFlex = (e) => {
         setCategoryflex(e.target.value);
     }
-    
 
-    if(props.nextalarm===props.currentstep)
+    const disablePastDate = () => {
+        const today = new Date( new Date().getTime() + 24 * 60 * 60 * 1000 );
+        const dd = String(today.getDate()).padStart(2, "0");
+        const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+        const yyyy = today.getFullYear();
+        return yyyy + "-" + mm + "-" + dd;
+    }
+
+    if(flagprev === true)
+    {
+        const newState = Object.assign({}, props.resultcleaning, {subcategory:subcategory , categorydate:categorydate , categorytimeflex:categorytimeflex});            
+        props.setResultcleaning(newState);
+        props.setCurrentstep(props.currentstep-1);
+    }
+    if(flagnext === true)
     {
         if(categorydate==="")
         {
-            console.log("here currentid null");
-            props.setNextalarm(-1);
-            if(flagdate===false)
-                setFlagdate(true);
+            console.log(flagdate);
+            console.log("here is order validate");
+            setFlagdate(true);
         }
         else
         {
             const newState = Object.assign({}, props.resultcleaning, {subcategory:subcategory , categorydate:categorydate , categorytimeflex:categorytimeflex});            
             props.setResultcleaning(newState);
-            props.setNextalarm(-1);
             props.setCurrentstep(props.currentstep+1);
         }   
     }
 
-    const disablePastDate = () => {
-        const today = new Date();
-        const dd = String(today.getDate() + 1).padStart(2, "0");
-        const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-        const yyyy = today.getFullYear();
-        return yyyy + "-" + mm + "-" + dd;
-    };
+    useLayoutEffect(()=>{
+        fnGetCategory()
+        .then((res)=>{
+            setSubcategorylist(res.data.categories);
+        });
+    },[]); 
+    
     return (
         <div className="text-color-1">
             <div>
