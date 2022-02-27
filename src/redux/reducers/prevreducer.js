@@ -1,18 +1,13 @@
 import { CLICKPREV , INITPREV } from "../types/prevtypes"
 
-const initstate = {
-    ciickprev : true , 
-    initprev : false
-}
-
-const prevReducer = ( state = initstate , action ) =>{
+const prevReducer = ( state = false , action ) =>{
     switch (action.type) {
         case CLICKPREV:
             return action.payload
         case INITPREV:
             return action.payload
         default :
-            return state.initprev
+            return state
     }
 }
 

@@ -1,14 +1,30 @@
 import React , { useState , useLayoutEffect ,  } from "react"
 import { Form , Button , ButtonGroup } from 'react-bootstrap'
-import { fnGetCategory } from "../../../api";
+import { fnGetCategory } from "../../../api"
 import { useSelector , useDispatch } from "react-redux"
-import { initprevAction } from "../../../redux/actions/prevAction";
+import { initprevAction } from "../../../redux/actions/prevAction"
+import { initnextAction } from "../../../redux/actions/nextAction"
+
 
 const Order = (props) => {
     const [subcategorylist , setSubcategorylist] = useState([]);
     const [flagdate , setFlagdate] = useState(false);
     const flagprev = useSelector(state => state.prev);
     const dispatch = useDispatch();
+    const [subcategory , setSubcategory ] = useState(props.resultcleaning.subcategory);
+    const [categorydate , setCategorydate ]= useState(props.resultcleaning.categorydate);
+    const [categorytimeflex , setCategoryflex ] = useState(props.resultcleaning.categorytimeflex);
+    dispatch(initprevAction());
+    dispatch(initnextAction());
+    if(flagprev === true)
+    {
+        const newState = Object.assign({}, props.resultcleaning, {subcategory:subcategory , categorydate:categorydate , categorytimeflex:categorytimeflex});            
+        props.setResultcleaning(newState);
+        props.setCurrentstep(props.currentstep-1);
+    }
+
+    console.log("here is order current props.currentstep " , props.currentstep);
+    console.log("here is order current props.currentstep " , flagprev);
 
     useLayoutEffect(()=>{
         fnGetCategory()
@@ -16,11 +32,9 @@ const Order = (props) => {
             setSubcategorylist(res.data.categories);
             console.log(subcategorylist);
         });
-        dispatch(initprevAction());
+        // dispatch(initprevAction());
     },[]);
-    const [subcategory , setSubcategory ] = useState(props.resultcleaning.subcategory);
-    const [categorydate , setCategorydate ]= useState(props.resultcleaning.categorydate);
-    const [categorytimeflex , setCategoryflex ] = useState(props.resultcleaning.categorytimeflex);
+    
     const fnSubSelectChange = (e) => {
         setSubcategory(e.target.value);
     }
@@ -31,12 +45,7 @@ const Order = (props) => {
     const fnCategoryTimeFlex = (e) => {
         setCategoryflex(e.target.value);
     }
-    if(flagprev === true)
-    {
-        const newState = Object.assign({}, props.resultcleaning, {subcategory:subcategory , categorydate:categorydate , categorytimeflex:categorytimeflex});            
-        props.setResultcleaning(newState);
-        props.setCurrentstep(props.currentstep-1);
-    }
+    
 
     if(props.nextalarm===props.currentstep)
     {

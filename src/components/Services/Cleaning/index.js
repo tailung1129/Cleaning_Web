@@ -181,7 +181,7 @@ const Cleaning = () => {
               <Col>
                 <Button
                   variant="warning"
-                  onClick={fnClickNext}
+                  onClick={()=>fnClickNext()}
                 >
                   Next
                 </Button>

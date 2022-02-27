@@ -9,12 +9,12 @@ import { initprevAction } from "../../../redux/actions/prevAction"
 const Category = (props) => {
 
     const dispatch = useDispatch();
-    const flagnext = useSelector( state => state.next );
-    useLayoutEffect(()=>{
-        dispatch(initprevAction());
-    },[]);
-    console.log("here is category flagnext" , flagnext);
-    const [currentid , setCurrentid ] = useState(props.resultcleaning.category);    
+    const flagnext = useSelector(state => state.next);
+    dispatch(initprevAction());
+    // useLayoutEffect(()=>{
+    //     dispatch(initprevAction());
+    // },[]);
+    const [currentid , setCurrentid ] = useState(props.resultcleaning.category);
     
     if(flagnext)
     {
