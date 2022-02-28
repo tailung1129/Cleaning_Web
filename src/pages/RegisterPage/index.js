@@ -1,5 +1,5 @@
 import RegisterLayout from "../../layout/RegisterLayout"
-import RegiserForm from "../../components/RegiserForm"
+import RegiserForm from "../../components/RegisterForm"
 import "./Register.css"
 
 const RegisterPage = () => {
