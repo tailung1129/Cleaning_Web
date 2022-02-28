@@ -1,6 +1,7 @@
 import React , {useState } from "react"
 import { Form , Button , ButtonGroup , Row , Col } from 'react-bootstrap'
-import Autocom from "./Autocom"
+// import Autocom from "./Autocom"
+import PredictionsOnInputChangen from "./GoogleMapApi/PredictionsOnInputChange"
 
 const Address = ( props ) => {
 
@@ -54,7 +55,8 @@ const Address = ( props ) => {
     return (
         <Row className="text-color-1">
             <Row>
-                <Autocom />
+                {/* <Autocom /> */}
+                <PredictionsOnInputChange />
                 <Form.Group className="col-6">
                     <Form.Label>ADDRESS-(TYPE&SELECT ADDRESS)</Form.Label>
                     <Form.Control type="text" onChange={fnAddress} value={address} className={addressflag&&"border border-danger"} />

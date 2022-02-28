@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import usePlacesAutocomplete from "use-places-autocomplete";
 import {
   Combobox,
@@ -28,7 +29,7 @@ export default function Autocom() {
 
   const renderSuggestions = () => {
     const suggestions = data.map((place_id, description) => (
-      <ComboboxOption key={place_id} value={description} />
+      <ComboboxOption key={description} value={place_id} />
     ));
 
     return (

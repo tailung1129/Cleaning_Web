@@ -17,7 +17,7 @@ import "./Cleaning.css";
 
 const Cleaning = () => {
 
-  const [currentstep, setCurrentstep] = useState(3);
+  const [currentstep, setCurrentstep] = useState(2);
   const [nextalarm, setNextalarm] = useState(-1);
   const [resultcleaning, setResultcleaning] = useState({
     category : "",
