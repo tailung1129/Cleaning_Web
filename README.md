@@ -25,7 +25,4 @@ npm start
 - [React](https://reactjs.org/)
 - [Create React App](https://create-react-app.dev/)
 - [react-bootstrap](https://react-bootstrap.github.io/)
-
-## Copyright and License
-
-Copyright 2021 Chris Achinga. Code released under the [MIT license](LICENSE).
+- react-redux
