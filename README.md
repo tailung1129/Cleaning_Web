@@ -25,3 +25,4 @@ npm start
 - [React](https://reactjs.org/)
 - [Create React App](https://create-react-app.dev/)
 - [react-bootstrap](https://react-bootstrap.github.io/)
+- [react-redux]
