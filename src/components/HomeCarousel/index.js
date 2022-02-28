@@ -21,29 +21,29 @@ export default function HomeCarousel() {
             alt="First slide"
           />
           <Carousel.Caption>
-            <Card className="text-center w-60 mt-5 h-50">
+            <Card className="text-center w-500px mt-5 h-50">
                 <Card.Header className="background-color-2">Get free quotes for cleaning</Card.Header>
                 <Card.Body className="text-color-2" >
-                    <Card.Title className="my-4">Where do you need cleaning</Card.Title>
+                    <Card.Title className="my-1">Where do you need cleaning</Card.Title>
                     <div className="d-flex flex-wrap align-items-center justify-content-center my-4">
-                        <Link to="service/cleaning?ccategory=APARTMENT" className="mx-2 bg-color-icon-div1 text-color-2 pt-2 nav-link">
-                            <BsBuilding fontSize="3em" />
-                            <div>APARTMENT</div>
+                        <Link to="service/cleaning?ccategory=APARTMENT" className="mx-2 bg-color-icon-div1 text-color-2 pt-3 nav-link">
+                            <BsBuilding fontSize="1.5em" />
+                            <div className="f-size-10px" >APARTMENT</div>
                         </Link>
-                        <Link to="service/cleaning?ccategory=HOUSE" className="mx-2 bg-color-icon-div1 text-color-2 pt-2 nav-link">
-                            <BsHouseFill fontSize="3em" />
-                            <div>HOUSE</div>
+                        <Link to="service/cleaning?ccategory=HOUSE" className="mx-2 bg-color-icon-div1 text-color-2 pt-3 nav-link">
+                            <BsHouseFill fontSize="1.5em" />
+                            <div className="f-size-10px" >HOUSE</div>
                         </Link>
-                        <Link to="service/cleaning?ccategory=OFFICE" className="mx-2 bg-color-icon-div1 text-color-2 pt-2 nav-link">
-                            <BsFileEarmarkText fontSize="3em" />
-                            <div>OFFICE</div>
+                        <Link to="service/cleaning?ccategory=OFFICE" className="mx-2 bg-color-icon-div1 text-color-2 pt-3 nav-link">
+                            <BsFileEarmarkText fontSize="1.5em" />
+                            <div className="f-size-10px" >OFFICE</div>
                         </Link>
-                        <Link to="service/cleaning?ccategory=MISCELLANEOUS" className="mx-2 bg-color-icon-div1 text-color-2 pt-2 nav-link">
-                            <BsQuestionLg fontSize="3em" />
-                            <div>MISCELLANEOUS</div>
+                        <Link to="service/cleaning?ccategory=MISCELLANEOUS" className="mx-2 bg-color-icon-div1 text-color-2 pt-3 nav-link">
+                            <BsQuestionLg fontSize="1.5em" />
+                            <div className="f-size-10px" >MISCELLANEOUS</div>
                         </Link>
                     </div>
-                    <Button variant="warning" className="mt-3 text-white">further</Button>
+                    <Button variant="warning" className="mt-2 text-white">further</Button>
                 </Card.Body>
             </Card>
           </Carousel.Caption>

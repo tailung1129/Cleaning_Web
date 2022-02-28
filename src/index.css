@@ -39,3 +39,11 @@ main {
 .mt-70px {
   margin-top: 70px;
 }
+
+.w-500px {
+  width: 500px;
+}
+
+.f-size-10px {
+  font-size: 12px;
+}
