@@ -26,6 +26,11 @@ const PhoneVerify = (props) => {
             setFlagphonenumber(true);
         } 
         else {
+            var areas = [];
+            var extras = "";
+            preresult.whatclean.map( list => areas.push(list.value));
+            preresult.additionalarea.map( list => extras += list.value)
+
             var matches = availabletime.match(/\d+/g);
             var postdata = {
                 categoryId: preresult.subcategory,
@@ -39,8 +44,8 @@ const PhoneVerify = (props) => {
                 purchaseGuarantee: "",
                 objectArea: parseInt(preresult.floorarea),
                 pollution: preresult.pollution,
-                areas: [preresult.whatclean],
-                extras: preresult.additionalarea,
+                areas: areas,
+                extras: extras,
                 address: {
                     number: "12",
                     addressLine1: "Lindenmoosstrasse 18",
