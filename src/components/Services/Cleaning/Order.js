@@ -61,9 +61,9 @@ const Order = (props) => {
                 <Col>
                     <Form.Group>
                         <Form.Label>CATEGORY</Form.Label>
-                        <select className="form-select" onChange={fnSubSelectChange} value={subcategory}>
+                        <Form.Select onChange={fnSubSelectChange} value={subcategory}>
                             {subcategorylist.map( (list, index) => (<option key={index} value={list.id}>{list.type}</option>) )}
-                        </select>
+                        </Form.Select>
                     </Form.Group>
                 </Col>
                 <Col></Col>
