@@ -31,7 +31,7 @@ const LoginForm = () => {
             console.log(res.data);
             if(res.data.response_description==="Login Success") {
               // dispatch(saverequestsAction(res.data.company.requests));
-              window.location.href = "/account/requests"
+              // window.location.href = "/account/requests"
             }
         }).catch((error) => {
             console.log(error)
