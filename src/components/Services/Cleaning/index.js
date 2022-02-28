@@ -17,7 +17,7 @@ import "./Cleaning.css";
 
 const Cleaning = () => {
 
-  const [currentstep, setCurrentstep] = useState(1);
+  const [currentstep, setCurrentstep] = useState(3);
   const [nextalarm, setNextalarm] = useState(-1);
   const [resultcleaning, setResultcleaning] = useState({
     category : "",
@@ -29,8 +29,8 @@ const Cleaning = () => {
     floorarea : "100",
     roomnum : "5",
     pollution : "Very dirty",
-    whatclean : "Parkett",
-    additionalarea : "Garage",
+    whatclean : { value: 'Parkett', label: 'Parkett' },
+    additionalarea : { value: 'Garage', label: 'Garage' },
     orderdescription : "",
     morefile : "",
     offertype : "Rough",
