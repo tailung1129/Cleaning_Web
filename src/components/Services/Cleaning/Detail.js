@@ -29,7 +29,7 @@ const Detail = ( props ) => {
 
     return (
         <div className="text-color-1">
-            <div className="row">
+            <Row>
                 <Form.Group className="col-6">
                     <Form.Label>WHAT TO CLEAN(MULTIPLE CHOICE)</Form.Label>
                     <select className="form-select" onChange={fnWhatClean} value={whatclean}>
@@ -48,7 +48,7 @@ const Detail = ( props ) => {
                         <option value="Balkon">Balkon</option>
                     </select>
                 </Form.Group>
-            </div>
+            </Row>
             <Form.Group className="pt-4">
                 <Form.Label>ORDER DESCRIPTION</Form.Label>
                 <Form.Control as="textarea" value={orderdescription} rows={5} placeholder="Description: Requests with a detailed description receive significantly more, faster and more precise offers!" onChange={fnOrderdesciption} />

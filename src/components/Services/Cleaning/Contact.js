@@ -1,4 +1,4 @@
-import React , {useState} from "react"
+import React , {useState , Fragment} from "react"
 import { Form , Row , Col , Button } from 'react-bootstrap'
 
 const Contact = ( props ) => {
@@ -45,7 +45,7 @@ const Contact = ( props ) => {
         }   
     }
     return (
-        <div>
+        <Fragment>
             <Row className="row text-color-1">
                 <Form.Group className="text-center mb-5 h4">
                     <Form.Label>Congratulations, suitable provider found. To whom should the offer be made out?</Form.Label>
@@ -81,7 +81,7 @@ const Contact = ( props ) => {
                     </Button>
                 </Col>
             </Row>
-        </div>
+        </Fragment>
     );
 }
 

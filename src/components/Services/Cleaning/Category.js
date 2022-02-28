@@ -1,6 +1,6 @@
 import "./Cleaning.css"
 import { Card , Row , Col , Button } from "react-bootstrap"
-import { useState } from "react"
+import { useState, Fragment } from "react"
 import { BsBuilding , BsHouseFill , BsFileEarmarkText , BsQuestionLg } from "react-icons/bs"
 
 const Category = (props) => {
@@ -15,24 +15,24 @@ const Category = (props) => {
     }
 
     return (
-        <div> 
+        <Fragment> 
             <Card className="text-center h-50">
                 <Card.Body className="text-color-2" >
                     <Card.Title className="my-4">Where do you need cleaning</Card.Title>
                     <div className="d-flex flex-wrap align-items-center justify-content-center my-4">
-                        <div className={(currentid==="APARTMENT")?"mx-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5 "+"active_category":"mx-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5"} onClick={()=>setCurrentid("APARTMENT")}>
+                        <div className={(currentid==="APARTMENT")?"m-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5 "+"active_category":"m-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5"} onClick={()=>setCurrentid("APARTMENT")}>
                             <BsBuilding fontSize="5em" />
                             <div>APARTMENT</div>
                         </div>
-                        <div className={(currentid==="HOUSE")?"mx-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5 "+"active_category":"mx-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5"} onClick={()=>setCurrentid("HOUSE")}>
+                        <div className={(currentid==="HOUSE")?"m-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5 "+"active_category":"m-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5"} onClick={()=>setCurrentid("HOUSE")}>
                             <BsHouseFill fontSize="5em" />
                             <div>HOUSE</div>
                         </div>
-                        <div className={(currentid==="OFFICE")?"mx-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5 "+"active_category":"mx-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5"} onClick={()=>setCurrentid("OFFICE")}>
+                        <div className={(currentid==="OFFICE")?"m-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5 "+"active_category":"m-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5"} onClick={()=>setCurrentid("OFFICE")}>
                             <BsFileEarmarkText fontSize="5em" />
                             <div>OFFICE</div>
                         </div>
-                        <div className={(currentid==="MISCELLANEOUS")?"mx-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5 "+"active_category":"mx-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5"} onClick={()=>setCurrentid("MISCELLANEOUS")}>
+                        <div className={(currentid==="MISCELLANEOUS")?"m-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5 "+"active_category":"m-2 bg-color-icon-div text-color-2 pt-4 nav-link mx-5"} onClick={()=>setCurrentid("MISCELLANEOUS")}>
                             <BsQuestionLg fontSize="5em" />
                             <div>MISCELLANEOUS</div>
                         </div>
@@ -57,7 +57,7 @@ const Category = (props) => {
                     </Button>
                 </Col>
             </Row>
-        </div>
+        </Fragment>
     );
 }
 

@@ -1,4 +1,4 @@
-import React , { useState , useLayoutEffect } from "react"
+import React , { useState , useLayoutEffect , Fragment } from "react"
 import { Form , Button , ButtonGroup , Row , Col } from 'react-bootstrap'
 import { fnGetCategory } from "../../../api"
 
@@ -56,38 +56,39 @@ const Order = (props) => {
     },[]); 
     
     return (
-        <div>   
-            <div className="text-color-1">
-                <div>
-                    <Form.Group className="col-6">
+        <Fragment>
+            <Row>
+                <Col>
+                    <Form.Group>
                         <Form.Label>CATEGORY</Form.Label>
                         <select className="form-select" onChange={fnSubSelectChange} value={subcategory}>
                             {subcategorylist.map( (list, index) => (<option key={index} value={list.id}>{list.type}</option>) )}
                         </select>
                     </Form.Group>
-                </div>
-                <div className="pt-2 row">
-                    <div className="col-6">
+                </Col>
+                <Col></Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Form.Group>
+                        <Form.Label>DATE</Form.Label>
+                        <Form.Control type="date" onChange={fnCategoryDate} value={categorydate} min={disablePastDate()} className={flagdate&&"border border-danger"} />
+                    </Form.Group>
+                </Col>
+                <Col>
+                    <Form.Group>
+                        <Form.Label>TIME FLEXIBILITY</Form.Label>
                         <Form.Group>
-                            <Form.Label>DATE</Form.Label>
-                            <Form.Control type="date" onChange={fnCategoryDate} value={categorydate} min={disablePastDate()} className={flagdate&&"border border-danger"} />
+                            <ButtonGroup onClick={fnCategoryTimeFlex}>
+                                <Button variant="secondary" className={categorytimeflex==="1 day"?"active_button":""} value="1 day">1 day</Button>
+                                <Button variant="secondary" className={categorytimeflex==="1 week"?"active_button":""} value="1 week">1 week</Button>
+                                <Button variant="secondary" className={categorytimeflex==="1 month"?"active_button":""} value="1 month">1 month</Button>
+                                <Button variant="secondary" className={categorytimeflex==="No"?"active_button":""} value="No">No</Button>
+                            </ButtonGroup>
                         </Form.Group>
-                    </div>
-                    <div className="col-6">
-                        <Form.Group>
-                            <Form.Label>TIME FLEXIBILITY</Form.Label>
-                            <div>
-                                <ButtonGroup onClick={fnCategoryTimeFlex}>
-                                    <Button variant="secondary" className={categorytimeflex==="1 day"?"active_button":""} value="1 day">1 day</Button>
-                                    <Button variant="secondary" className={categorytimeflex==="1 week"?"active_button":""} value="1 week">1 week</Button>
-                                    <Button variant="secondary" className={categorytimeflex==="1 month"?"active_button":""} value="1 month">1 month</Button>
-                                    <Button variant="secondary" className={categorytimeflex==="No"?"active_button":""} value="No">No</Button>
-                                </ButtonGroup>
-                            </div>
-                        </Form.Group>
-                    </div>
-                </div>
-            </div>
+                    </Form.Group>
+                </Col>
+            </Row>
             <Row className="my-4 py-4">
                 <Col className="text-end">
                     <Button
@@ -106,7 +107,7 @@ const Order = (props) => {
                     </Button>
                 </Col>
             </Row>
-        </div>
+        </Fragment>
     );
 }
 

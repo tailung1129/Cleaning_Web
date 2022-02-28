@@ -1,9 +1,10 @@
+import { Fragment } from "react"
 
 const CurrentComponent = (props) => {
     return (
-    <div className="mt-5">
-        {(props.steps[props.currentstep].component)}
-    </div>
+        <Fragment>
+            {(props.steps[props.currentstep].component)}
+        </Fragment>
     );
 }
 
