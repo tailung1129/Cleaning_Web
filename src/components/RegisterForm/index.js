@@ -3,7 +3,7 @@ import { Container , Card , Col , Form } from "react-bootstrap"
 import CardBody1 from "./CardBody1";
 import CardBody2 from "./CardBody2"
 
-const RegiserForm = () => {
+const RegisterForm = () => {
     const [showcurrent , setShowcurrent] = useState(0);    
     const fnChangeShow = () => {
         setShowcurrent(1-showcurrent);
@@ -24,4 +24,4 @@ const RegiserForm = () => {
     );
 }
 
-export default RegiserForm;
+export default RegisterForm;
