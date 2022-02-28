@@ -5,7 +5,7 @@ import "./HomeMenu.css"
 
 const HomeMenu = () => {
   return (
-    <Nav className="background-color-2 px-90px py-1">
+    <Nav className="background-color-1 px-90px py-1">
       <Link to="/" className="nav-link px-3 link-light">
         Cleaning
       </Link>

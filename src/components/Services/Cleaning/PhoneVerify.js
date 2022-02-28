@@ -46,7 +46,7 @@ const PhoneVerify = (props) => {
                     addressLine1: "Lindenmoosstrasse 18",
                     addressLine2: "Affoltern am Albis",
                     postCode: "8910",
-                    latitude: 47.27262698715916,
+                    latitude: 47.37262698715916,
                     longitude: 8.443410418977962
                 },
                 distance: 0,

@@ -4,9 +4,9 @@ import { FaRegUserCircle } from "react-icons/fa"
 
 const HomeHeader = () => {
   return (
-    <Row className="background-color-1 px-90px py-2">
+    <Row className="background-color-2 px-90px py-2">
       <Col md={2}>
-        <Link to="/" className="text-white text-decoration-none display-6" > <img width="250" height="50" src="/img/Compareit-removebg-preview.png" /></Link>
+        <Link to="/" className="text-white text-decoration-none display-6" > <img width="150" src="/img/Compareit-removebg-preview.png" /></Link>
       </Col>
       <Col md={{span:5 , offset:5}}>
         <Nav>
