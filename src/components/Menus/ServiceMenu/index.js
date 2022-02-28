@@ -6,7 +6,7 @@ import { Row } from "react-bootstrap"
 const ServiceMenu = () => {
     return (
         <Fragment>
-            <div className="text-color-2 text-center flow-header-content wrap-page py-1">
+            <div className="text-color-2 text-center flow-header-content wrap-page pt-4 py-1">
                 <h2>Get free quotes for cleaning</h2>
                 <h6>Compare up to 3 cleaning offers for free</h6>
                 <div className="d-inline-flex">

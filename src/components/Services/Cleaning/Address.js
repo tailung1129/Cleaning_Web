@@ -1,7 +1,19 @@
-import React , {useState } from "react"
+import React , {useState , useEffect } from "react"
 import { Form , Button , ButtonGroup , Row , Col } from 'react-bootstrap'
 // import Autocom from "./Autocom"
-import PredictionsOnInputChangen from "./GoogleMapApi/PredictionsOnInputChange"
+// import PredictionsOnInputChange from "./GoogleMapApi/PredictionsOnInputChange"
+
+import usePlacesAutocomplete , { getGeocode , getLatLng , getZipCode , getDetails } from "use-places-autocomplete";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+} from "@reach/combobox";
+
+import "@reach/combobox/styles.css";
+// import PlacesAutocomplete from './PlacesAutocomplete '
 
 const Address = ( props ) => {
 
@@ -11,6 +23,11 @@ const Address = ( props ) => {
     const [floorarea , setFloorarea] = useState(props.resultcleaning.floorarea);
     const [pollution , setPollution] = useState(props.resultcleaning.pollution);
     const [addressflag , setAddresflag] = useState(false);
+    
+
+    const [lat , setLat] = useState(props.resultcleaning.latitude);
+    const [lng , setLng] = useState(props.resultcleaning.longitude);
+    const [zipcode , setZipcode]= useState(props.resultcleaning.postcode);
 
     const fnAddress = ( e ) => {
         setAddress(e.target.value);
@@ -35,7 +52,7 @@ const Address = ( props ) => {
         setFloorarea(parseInt(floorarea)-1);
     }
     const fnClickPrev = () => {
-        const newState = Object.assign({}, props.resultcleaning, {address:address , roomnum:roomnum , mimportant:mimportant , floorarea:floorarea , pollution:pollution});            
+        const newState = Object.assign({}, props.resultcleaning, {address:address , roomnum:roomnum , mimportant:mimportant , floorarea:floorarea , pollution:pollution , latitude:lat , longitude:lng , postcode:zipcode});
         props.setResultcleaning(newState);
         props.setCurrentstep(props.currentstep-1);
     }
@@ -46,20 +63,88 @@ const Address = ( props ) => {
         }
         else
         {
-            const newState = Object.assign({}, props.resultcleaning, {address:address , roomnum:roomnum , mimportant:mimportant , floorarea:floorarea , pollution:pollution});            
+            console.log(lat , lng)
+            const newState = Object.assign({}, props.resultcleaning, {address:address , roomnum:roomnum , mimportant:mimportant , floorarea:floorarea , pollution:pollution , latitude:lat , longitude:lng , postcode:zipcode});      
             props.setResultcleaning(newState);
             props.setCurrentstep(props.currentstep+1);
         }   
     }
 
+    const {
+        ready,
+        value,
+        suggestions: { status, data },
+        setValue,
+    } = usePlacesAutocomplete();
+    
+    const handleInput = (e) => {
+        setValue(e.target.value);
+    };
+    
+    const handleSelect = (val) => {
+        setValue(val, false);
+        setAddress(val);
+        setAddresflag(false);
+        const parameter = {
+            address: val,
+        };
+        console.log(val);
+
+        getGeocode(parameter)
+        .then((results) => getLatLng(results[0]))
+        .then((latLng) => {
+            setLat(latLng.lat);
+            setLng(latLng.lng);
+        })
+        .catch((error) => {
+            console.log("Error: ", error);
+        });
+
+        getGeocode(parameter) 
+        .then((results) => getZipCode(results[0], false))
+        .then((zipCode) => {
+            setZipcode(zipCode);
+        })
+        .catch((error) => {
+            console.log("Error: ", error);
+        });
+    
+        getGeocode(parameter)
+        .then((results) => getDetails({placeId:results[0].place_id , fields: ["name" , "rating"]}) )
+        .then((details) => {
+            console.log("Details: ", details);
+        })
+        .catch((error) => {
+            console.log("Error: ", error);
+        });
+        
+    };
+
+    useEffect(() => {
+        setValue(props.resultcleaning.address);
+    } , [] )
+
     return (
         <Row className="text-color-1">
             <Row>
                 {/* <Autocom /> */}
-                <PredictionsOnInputChange />
+                {/* <PredictionsOnInputChange /> */}
+                
                 <Form.Group className="col-6">
                     <Form.Label>ADDRESS-(TYPE&SELECT ADDRESS)</Form.Label>
-                    <Form.Control type="text" onChange={fnAddress} value={address} className={addressflag&&"border border-danger"} />
+                    {/* < PlacesAutocomplete /> */}
+                    <Combobox onSelect={handleSelect} aria-labelledby="demo" >
+                        <ComboboxInput value={value} onChange={handleInput} disabled={!ready} className={addressflag===true?"border border-danger w-100":"w-100"} />
+                        <ComboboxPopover>
+                            <ComboboxList>
+                            {status === "OK" &&
+                                data.map(({ place_id, description }) => (
+                                <ComboboxOption key={place_id} value={description} />
+                                ))}
+                            </ComboboxList>
+                        </ComboboxPopover>
+                    </Combobox>
+                    {/* <Form.Control type="text" onChange={fnAddress} value={address} className={addressflag&&"border border-danger"} /> */}
                 </Form.Group>
                 <Form.Group className="col-3">
                     <Form.Label>WHAT IS MORE IMPORTANT</Form.Label>

@@ -29,7 +29,7 @@ const PhoneVerify = (props) => {
             var areas = [];
             var extras = "";
             preresult.whatclean.map( list => areas.push(list.value));
-            preresult.additionalarea.map( list => extras += list.value)
+            preresult.additionalarea.map( list => extras +=" " + list.value)
 
             var matches = availabletime.match(/\d+/g);
             var postdata = {
@@ -50,9 +50,9 @@ const PhoneVerify = (props) => {
                     number: "12",
                     addressLine1: "Lindenmoosstrasse 18",
                     addressLine2: "Affoltern am Albis",
-                    postCode: "8910",
-                    latitude: 47.37262698715916,
-                    longitude: 8.443410418977962
+                    postCode: preresult.postcode,
+                    latitude: preresult.latitude,
+                    longitude: preresult.longitude
                 },
                 distance: 0,
                 focus: preresult.mimportant,
@@ -135,7 +135,7 @@ const PhoneVerify = (props) => {
             </Form.Group>
         </Form>
         </Col>
-        <Col className="text-center pt-5">
+        <Col className="text-center py-3">
             <Button variant="danger" onClick={fnVerifyPhone} >To verify</Button>
         </Col>
     </Row>

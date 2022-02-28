@@ -10,6 +10,7 @@ const Order = (props) => {
 
     const [subcategorylist , setSubcategorylist] = useState([]);
     const [flagdate , setFlagdate] = useState(false);
+    const [flagcategory , setFlagecaregory] = useState(false);
 
     const fnSubSelectChange = (e) => {
         setSubcategory(e.target.value);
@@ -36,9 +37,13 @@ const Order = (props) => {
         props.setCurrentstep(props.currentstep-1);
     }
     const fnClickNext = () => {
-        if(categorydate==="")
+        if(categorydate===""||subcategory==="")
         {
-            setFlagdate(true);
+            if(categorydate==="")
+                setFlagdate(true);
+            if(subcategory==="")
+                setFlagecaregory(true);
+
         }
         else
         {
@@ -61,7 +66,7 @@ const Order = (props) => {
                 <Col>
                     <Form.Group>
                         <Form.Label>CATEGORY</Form.Label>
-                        <Form.Select onChange={fnSubSelectChange} value={subcategory}>
+                        <Form.Select onChange={fnSubSelectChange} value={subcategory} className={flagcategory&&"border border-danger"}>
                             {subcategorylist.map( (list, index) => (<option key={index} value={list.id}>{list.type}</option>) )}
                         </Form.Select>
                     </Form.Group>
