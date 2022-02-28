@@ -2,9 +2,14 @@ import { Card, Form, Button } from "react-bootstrap";
 import { fnLogin } from "../../api";
 import "./LoginForm.css";
 
+// import { useDispatch } from "react-redux";
+// import { saverequestsAction } from "../../redux/actions/requestsAction";
+
 const LoginForm = () => {
   var loginemail = "";
   var loginpassword = "";
+
+  // const dispatch = useDispatch();
 
   const fnLoginEmail = (e) => {
     loginemail = e.target.value;
@@ -25,8 +30,8 @@ const LoginForm = () => {
         .then((res) => {
             console.log(res.data);
             if(res.data.response_description==="Login Success") {
-
-              // window.location.href = "/account/requests"
+              // dispatch(saverequestsAction(res.data.company.requests));
+              window.location.href = "/account/requests"
             }
         }).catch((error) => {
             console.log(error)

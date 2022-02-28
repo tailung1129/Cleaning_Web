@@ -42,12 +42,12 @@ const PhoneVerify = (props) => {
                 areas: [preresult.whatclean],
                 extras: preresult.additionalarea,
                 address: {
-                    number: "",
-                    addressLine1: preresult.address,
-                    addressLine2: "",
-                    postCode: "",
-                    latitude: 100,
-                    longitude: 100
+                    number: "12",
+                    addressLine1: "Lindenmoosstrasse 18",
+                    addressLine2: "Affoltern am Albis",
+                    postCode: "8910",
+                    latitude: 47.27262698715916,
+                    longitude: 8.443410418977962
                 },
                 distance: 0,
                 focus: preresult.mimportant,
