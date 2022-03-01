@@ -64,6 +64,8 @@ const PhoneVerify = (props) => {
             fnRequestSave(postdata)
                 .then((res) => {
                     console.log(res);
+                    // if(res.data.status==="Success")
+                    //     window.location.href = "/"
                 }).catch((error) => {
                     console.log(error)
                 });

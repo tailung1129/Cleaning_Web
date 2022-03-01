@@ -21,7 +21,7 @@ export default function HomeCarousel() {
             alt="First slide"
           />
           <Carousel.Caption>
-            <Card className="text-center w-500px mt-5 h-50">
+            <Card className="text-center w-500px mt-5">
                 <Card.Header className="background-color-2">Get free quotes for cleaning</Card.Header>
                 <Card.Body className="text-color-2" >
                     <Card.Title className="my-1">Where do you need cleaning</Card.Title>

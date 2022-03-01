@@ -28,3 +28,8 @@
     background-color: #e2dcc0;
 }
 
+.carousel-caption {
+    top : 1.25rem!important;
+    bottom: 0!important;
+}
+
