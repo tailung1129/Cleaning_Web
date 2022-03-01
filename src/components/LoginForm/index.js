@@ -1,4 +1,5 @@
 import { Card, Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { fnLogin } from "../../api";
 import "./LoginForm.css";
 
@@ -6,6 +7,9 @@ import "./LoginForm.css";
 // import { saverequestsAction } from "../../redux/actions/requestsAction";
 
 const LoginForm = () => {
+
+  const navigate = useNavigate();
+
   var loginemail = "";
   var loginpassword = "";
 
@@ -31,7 +35,7 @@ const LoginForm = () => {
             console.log(res.data);
             if(res.data.response_description==="Login Success") {
               // dispatch(saverequestsAction(res.data.company.requests));
-              // window.location.href = "/account/requests"
+              navigate("/account/requests");
             }
         }).catch((error) => {
             console.log(error)
