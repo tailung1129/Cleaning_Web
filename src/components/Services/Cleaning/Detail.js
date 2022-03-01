@@ -19,8 +19,8 @@ const Detail = ( props ) => {
         props.setCurrentstep(props.currentstep-1);
     }
     const fnClickNext = () => {
-        setFlag1(true);
-        setFlag2(true);
+        setFlag1(false);
+        setFlag2(false);
         if(selectedOption1.length===0 || selectedOption2.length===0) {
             if(selectedOption1.length===0) {
                 setFlag1(true);
