@@ -1,35 +1,35 @@
 import { Table , Button } from "react-bootstrap"
 import RequestDrop from "./RequestDrop";
+import { Link } from "react-router-dom"
+import { useSelector } from "react-redux";
 
 const Requests = () => {
+    const requests = useSelector( state => state.company.requests);
+    console.log(requests);
+    
     return (
         <Table className="mt-3" responsive striped hover> 
-            <tbody>
-                <tr>
-                    <td>
-                        <h5>Moving to Zurich(International)</h5>
-                        <div>02/22/2022</div>
-                        <RequestDrop />
-                    </td>
-                    <td>
-                        <h5>CHF 24.50</h5>
-                        <br/>
-                        <Button href="requests/detail" size="sm">For sale</Button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h5>Cleaning in Baden</h5>
-                        <div>02/22/2022</div>
-                        <RequestDrop />
-                    </td>
-                    <td>
-                        <h5>CHF 24.50</h5>
-                        <br/>
-                        <Button href="requests/detail" size="sm">For sale</Button>
-                    </td>
-                </tr>
-            </tbody>
+        {requests?
+            (<tbody>
+                {requests.map(( list , index ) => (
+                    <tr key={index}>
+                        <td>
+                            <h5>{list.category.type}</h5>
+                            <div>{list.date}</div>
+                            <RequestDrop list={list} />
+                        </td>
+                        <td>
+                            <h5>CHF </h5>
+                            <br/>
+                            <Link to={"/account/requests/detail?index="+index}><Button size="sm">Detail</Button></Link>
+                            
+                        </td>
+                    </tr>
+                ))}
+            </tbody>)
+        :"No data"
+        }
+            
         </Table>
     );
 }

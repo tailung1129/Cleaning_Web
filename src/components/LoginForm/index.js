@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { fnLogin } from "../../api";
 import "./LoginForm.css";
 
-// import { useDispatch } from "react-redux";
-// import { saverequestsAction } from "../../redux/actions/requestsAction";
+import { useDispatch } from "react-redux";
+import { companyloginAction } from "../../redux/actions/companyAction";
 
 const LoginForm = () => {
 
@@ -13,7 +13,7 @@ const LoginForm = () => {
   var loginemail = "";
   var loginpassword = "";
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const fnLoginEmail = (e) => {
     loginemail = e.target.value;
@@ -28,13 +28,12 @@ const LoginForm = () => {
     ele.reportValidity();
     if (chk_status) {
       var postdata = { email: loginemail, password: loginpassword };
-      // console.log("here is login vaildation success");
 
       fnLogin(postdata)
         .then((res) => {
             console.log(res.data);
             if(res.data.response_description==="Login Success") {
-              // dispatch(saverequestsAction(res.data.company.requests));
+              dispatch(companyloginAction(res.data.company));
               navigate("/account/requests");
             }
         }).catch((error) => {

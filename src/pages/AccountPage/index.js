@@ -11,8 +11,8 @@ const AccountPage = () => {
             <Container>
                 <AccountMenu />
                 <Routes>
-                    <Route path="/requests" element={<Requests />} />
-                    <Route path="/requests/detail" element={<RequestDetail />} />
+                    <Route path="requests" element={<Requests />} />
+                    <Route path="requests/detail" element={<RequestDetail />} />
                 </Routes>
             </Container>
         </AccountLayout>

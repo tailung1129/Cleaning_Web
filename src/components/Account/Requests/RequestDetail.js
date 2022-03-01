@@ -1,95 +1,108 @@
 import { Row , Col , Card , Form , InputGroup , Button } from "react-bootstrap"
 import { BsFileEarmarkText } from "react-icons/bs"
 import { FaTelegramPlane , FaPrint , FaQuestionCircle } from "react-icons/fa"
+import { useSelector } from "react-redux"
+import { Fragment } from "react"
 
 const RequestDetail = () => {
+    const params = new URLSearchParams(window.location.search)
+    const listindex = params.get('index');
+    
+    const requests = useSelector( state => state.company.requests);
+    console.log("here is detail request" , requests)
+    const company = useSelector( state => state.company);
+    const detail = company.requests[listindex];
+    console.log("here is listindex " , detail);
+
+
     return (
         <Row className="mt-3">
-            <Col md={8}>
-                <h2>Cleaning request 81228 for LnB clearance service</h2>
-                <Card>
+            <Col >
+                {/* <h2>Cleaning request 81228 for LnB clearance service</h2> */}
+                
+                <Card  >
                     <Card.Header>Contact details</Card.Header>
                     <Card.Body>
                         <Row>
-                            <Col md={4}>Surname</Col>
-                            <Col md={8}>Antje Bigalke</Col>
+                            <Col md={4}>Name</Col>
+                            <Col md={8}>{detail.user.lastname} {detail.user.firstname}</Col>
                         </Row>
                         <Row>
                             <Col md={4}>Phone</Col>
-                            <Col md={8}>+41767863977</Col>
+                            <Col md={8}>{detail.user.contactNo}</Col>
                         </Row>
                         <Row>
                             <Col md={4}>E-mail</Col>
-                            <Col md={8}>antjebigalke@web.de</Col>
+                            <Col md={8}>{detail.user.email}</Col>
                         </Row>
                     </Card.Body>
                 </Card>
-                <Card className="mt-4">
+                
+
+                <Card className="mt-4" >
                     <Card.Header>details of the request</Card.Header>
                     <Card.Body>
                         <Row>
                             <Col md={4}>Category</Col>
-                            <Col md={8}>Other Cleaning(ID:81273)</Col>
+                            <Col md={8}>{detail.category.type}</Col>
                         </Row>
                         <Row>
                             <Col md={4}>Contact request</Col>
-                            <Col md={8}>Rough offer/advice</Col>
+                            <Col md={8}></Col>
                         </Row>
                         <Row>
                             <Col md={4}>Date</Col>
-                            <Col md={8}>Wednesday , 02/23/2022</Col>
+                            <Col md={8}>{detail.date}</Col>
                         </Row>
                         <Row>
                             <Col md={4}>Object</Col>
-                            <Col md={8}>apartment</Col>
+                            <Col md={8}></Col>
                         </Row>
                         <Row>
                             <Col md={4}>Number of Room</Col>
-                            <Col md={8}>3 rooms</Col>
+                            <Col md={8}>{detail.numberOfRooms} rooms</Col>
                         </Row>
                         <Row>
                             <Col md={4}>Object area</Col>
-                            <Col md={8}>100 m2</Col>
+                            <Col md={8}>{detail.objectArea} m2</Col>
                         </Row>
                         <Row>
                             <Col md={4}>Pollution</Col>
-                            <Col md={8}>Very dirty</Col>
+                            <Col md={8}>{detail.pollution}</Col>
                         </Row>
                         <Row>
                             <Col md={4}>Areas</Col>
-                            <Col md={8}>Parquet, window panes, blinds/shutters, slats</Col>
+                            <Col md={8}>{detail.address.location}</Col>
                         </Row>
                         <Row>
                             <Col md={4}>Extras</Col>
-                            <Col md={8}>No</Col>
-                        </Row>
-                        <Row>
-                            <Col md={4}>Location</Col>
-                            <Col md={8}>5400 Baden, CH</Col>
+                            <Col md={8}>{detail.extras}</Col>
                         </Row>
                         <Row>
                             <Col md={4}>Distance</Col>
-                            <Col md={8}>30 kM(linear ditance)</Col>
+                            <Col md={8}>{detail.distance}</Col>
                         </Row>
                         <Row>
                             <Col md={4}>Focus</Col>
-                            <Col md={8}>quality</Col>
+                            <Col md={8}>{detail.focus}</Col>
                         </Row>
                         <Row>
                             <Col md={4}>Tel. reachable</Col>
-                            <Col md={8}>1pm-5pm</Col>
+                            <Col md={8}>{detail.reachableFrom}pm-{detail.reachableTill}pm</Col>
                         </Row>
                         <Row>
                             <Col md={4}>Discount</Col>
-                            <Col md={8}>30% discount because person only entered email</Col>
+                            <Col md={8}>{detail.discount}</Col>
                         </Row>
                     </Card.Body>
                 </Card>
-                <Card className="my-4  border border-primary">
+                
+                {/* <div>
+                <Card className="my-4 border border-primary" >
                     <Card.Header className="bg-primary text-white"><BsFileEarmarkText /> make an offer</Card.Header>
                     <Card.Body>
-                        <Form.Text>Hello Antje Bigalke</Form.Text><br /><br />
-                        <Form.Text>The company LnB Räumungsservice makes you an offer for your cleaning project in Dübendorf (ID: 81228)</Form.Text><br /><br />
+                        <Form.Text>{"Hello" + detail.user.lastname + " " + detail.user.firstname}</Form.Text><br /><br />
+                        <Form.Text>{"The company " + company.name + " makes you an offer for your " + detail.category + " project"} </Form.Text>
                         <Form.Control as="textarea" placeholder="Please describe offer here..." rows={6} />
                         <Col md={3} className="my-4">
                             <InputGroup>
@@ -102,8 +115,10 @@ const RequestDetail = () => {
                         <Button variant="success">Success</Button>
                     </Card.Footer>
                 </Card>
+                </div> */}
+                
             </Col>
-            <Col md={4}>
+            {/* <Col md={4}>
                 <Row>
                     <Col>
                         <Button variant="outline-dark" size="sm"><FaTelegramPlane  /> Send dossier by email</Button>
@@ -130,7 +145,7 @@ const RequestDetail = () => {
                     <Card.Header>location</Card.Header>
                     <Card.Body></Card.Body>
                 </Card>
-            </Col>
+            </Col> */}
         </Row>
     );
 }
