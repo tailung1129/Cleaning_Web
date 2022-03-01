@@ -1,25 +1,26 @@
 import { Nav } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 const AccountMenu = () => {
     return (
         <Nav variant="pills" justify="true" className="mt-3">
             <Nav.Item>
-                <Nav.Link href="/account/overview" className="rounded-0 border">Overview</Nav.Link>
+                <Link to="/account/requests" className="text-decoration-none"><div className="rounded-0 border py-2">Overview</div></Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link href="/account/Filter" className="rounded-0 border">Filter</Nav.Link>
+                <Link to="/account/requests" className="text-decoration-none"><div className="rounded-0 border py-2">Filter</div></Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link href="/account/requests" className="rounded-0 border">Requests</Nav.Link>
+                <Link to="/account/requests" className="text-decoration-none"><div className="rounded-0 border py-2">Requests</div></Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link href="/account/profile" className="rounded-0 border">Profile</Nav.Link>
+                <Link to="/account/requests" className="text-decoration-none"><div  className="rounded-0 border py-2">Profile</div></Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link href="/account/finance" className="rounded-0 border">Finacnce</Nav.Link>
+                <Link to="/account/requests" className="text-decoration-none"><div  className="rounded-0 border py-2">Finacnce</div></Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link href="/logout" className="rounded-0 border">Logout</Nav.Link>
+                <Link to="/account/requests" className="text-decoration-none"><div className="rounded-0 border py-2">Logout</div></Link>
             </Nav.Item>
         </Nav>
         
