@@ -1,6 +1,6 @@
 import axios from "axios"
 
-axios.defaults.baseURL = "http://192.168.116.43:8080";
+axios.defaults.baseURL = "http://localhost:8080";
 
 export async function fnLogin ( postdata ) {
     return await axios.post('/company/login' , postdata)
