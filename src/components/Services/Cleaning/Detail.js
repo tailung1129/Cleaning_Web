@@ -7,6 +7,8 @@ const Detail = ( props ) => {
     const [orderdescription , setOrderdescription ] = useState(props.resultcleaning.orderdescription);
     const [selectedOption1, setSelectedOption1] = useState(props.resultcleaning.whatclean);
     const [selectedOption2, setSelectedOption2] = useState(props.resultcleaning.additionalarea);
+    const [flag1 , setFlag1] = useState(false);
+    const [flag2 , setFlag2] = useState(false);
 
     const fnOrderdesciption = ( e ) => {
         setOrderdescription(e.target.value);
@@ -17,9 +19,21 @@ const Detail = ( props ) => {
         props.setCurrentstep(props.currentstep-1);
     }
     const fnClickNext = () => {
+        setFlag1(true);
+        setFlag2(true);
+        if(selectedOption1.length===0 || selectedOption2.length===0) {
+            if(selectedOption1.length===0) {
+                setFlag1(true);
+            }
+            if(selectedOption2.length===0) {
+                setFlag2(true);
+            }
+        }
+        else {
             const newState = Object.assign({}, props.resultcleaning, {whatclean:selectedOption1 , additionalarea:selectedOption2 , orderdescription:orderdescription});            
             props.setResultcleaning(newState);
             props.setCurrentstep(props.currentstep+1);
+        }      
     }
 
     const options1 = [
@@ -47,6 +61,7 @@ const Detail = ( props ) => {
                         onChange={setSelectedOption1}
                         options={options1}
                         isMulti={true}
+                        className={flag1&&"border border-danger"}
                     />
                 </Form.Group>
                 <Form.Group className="col-6">
@@ -56,6 +71,7 @@ const Detail = ( props ) => {
                         onChange={setSelectedOption2}
                         options={options2}
                         isMulti={true}
+                        className={flag2&&"border border-danger"}
                     />
                 </Form.Group>
             </Row>
