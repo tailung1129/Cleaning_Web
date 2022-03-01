@@ -29,10 +29,6 @@ const Address = ( props ) => {
     const [lng , setLng] = useState(props.resultcleaning.longitude);
     const [zipcode , setZipcode]= useState(props.resultcleaning.postcode);
 
-    const fnAddress = ( e ) => {
-        setAddress(e.target.value);
-        setAddresflag(false);
-    }
     const fnMImportant = ( e ) => {
         setMimportant(e.target.value);
     }

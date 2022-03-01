@@ -47,9 +47,7 @@ const PhoneVerify = (props) => {
                 areas: areas,
                 extras: extras,
                 address: {
-                    number: "12",
-                    addressLine1: "Lindenmoosstrasse 18",
-                    addressLine2: "Affoltern am Albis",
+                    location: preresult.address,
                     postCode: preresult.postcode,
                     latitude: preresult.latitude,
                     longitude: preresult.longitude
