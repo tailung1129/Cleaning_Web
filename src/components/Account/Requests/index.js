@@ -9,7 +9,7 @@ const Requests = () => {
     
     return (
         <Table className="mt-3" responsive striped hover> 
-        {requests?
+        {(requests!==undefined&&requests!==null&&requests.length!==0)?
             (<tbody>
                 {requests.map(( list , index ) => (
                     <tr key={index}>

@@ -138,7 +138,7 @@ const PhoneVerify = (props) => {
         </Form>
         </Col>
         <Col className="text-center py-3">
-            <Button variant="danger" onClick={fnVerifyPhone} >To verify</Button>
+            <Button variant="danger" onClick={fnVerifyPhone} >Send</Button>
         </Col>
     </Row>
   );

@@ -20,7 +20,7 @@ const AccountMenu = () => {
                 <Link to="/account/requests" className="text-decoration-none"><div  className="rounded-0 border py-2">Finacnce</div></Link>
             </Nav.Item>
             <Nav.Item>
-                <Link to="/account/requests" className="text-decoration-none"><div className="rounded-0 border py-2">Logout</div></Link>
+                <Link to="/" className="text-decoration-none"><div className="rounded-0 border py-2">Logout</div></Link>
             </Nav.Item>
         </Nav>
         

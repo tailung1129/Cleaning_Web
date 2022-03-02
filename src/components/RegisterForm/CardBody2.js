@@ -1,4 +1,5 @@
 import { Card, Row, Col, Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { fnRegister } from "../../api"
 
 const Cardbody2 = (props) => {
@@ -12,6 +13,8 @@ const Cardbody2 = (props) => {
   var postcode = "";
   var location = "";
   var phonenumber = "";
+
+  const navigate = useNavigate()
 
   const fnCompanyName = (e) => {
     companyname = e.target.value;
@@ -64,6 +67,8 @@ const Cardbody2 = (props) => {
         fnRegister( postdata )
             .then((res) => {
                 console.log(res.data)
+                if(res.data.response_description === "Success")
+                  navigate("/");
             }).catch((error) => {
                 console.log(error)
         });

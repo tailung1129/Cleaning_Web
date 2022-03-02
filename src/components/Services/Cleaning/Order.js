@@ -57,7 +57,7 @@ const Order = (props) => {
         fnGetCategory()
         .then((res)=>{
             setSubcategorylist(res.data.categories);
-            // setSubcategory(res.data.categories[0].id);
+            setSubcategory(res.data.categories[0].id);
         });
     },[]); 
     
