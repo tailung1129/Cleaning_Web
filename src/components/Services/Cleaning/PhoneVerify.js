@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import {useNavigate} from "react-router-dom";
 import { Form, ButtonGroup, Button, Col , Row } from "react-bootstrap";
-import { fnRequestSave } from "../../../api"
+import { fnRequestSave } from "../../../api";
 
 const PhoneVerify = (props) => {
     var preresult = props.resultcleaning;
+    const navigate = useNavigate();
     const [phonenumber, setPhonenumber] = useState(
         props.resultcleaning.phonenumber
     );
@@ -62,8 +64,8 @@ const PhoneVerify = (props) => {
             fnRequestSave(postdata)
                 .then((res) => {
                     console.log(res);
-                    // if(res.data.status==="Success")
-                    //     window.location.href = "/"
+                    if(res.data.status==="Success")
+                        navigate("/");
                 }).catch((error) => {
                     console.log(error)
                 });
