@@ -39,6 +39,7 @@ const LoginForm = () => {
         }).catch((error) => {
             console.log(error)
         });
+      console.log("this si test");
     }
   };
   return (
